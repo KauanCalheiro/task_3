@@ -1,0 +1,59 @@
+services:
+  php-auth:
+    container_name: php-auth
+    restart: always
+    build:
+      context: ./auth
+      dockerfile: Dockerfile
+    environment:
+      DB_CONNECTION: pgsql
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: postgres
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+    volumes:
+      - ./auth:/var/www/html
+    networks:
+      - task-3-network
+    expose:
+      - 80
+
+  ngix:
+    container_name: nginx
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    depends_on:
+      - php-auth
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/logs:/etc/nginx/logs
+    networks:
+      - task-3-network
+
+  postgres:
+    # psql -hlocalhost -p5000 -Upostgres -dpostgres
+    container_name: postgres
+    restart: always
+    build: 
+      context: ./postgres
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5000:5432"
+    expose:
+      - 5432
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+    networks:
+      - task-3-network
+
+networks:
+  task-3-network:
+    driver: bridge
