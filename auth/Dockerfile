@@ -4,7 +4,6 @@ WORKDIR /var/www/html
 
 COPY . .
 COPY ./apache.conf /etc/apache2/sites-available/000-default.conf
-COPY ./.env.example ./.env
 
 RUN apt-get update && apt-get install -y \
     libpq-dev \
