@@ -1,6 +1,6 @@
 <?php
 
 Route::get('/', function () {
-    return response()->json(['message' => 'API is working']);
+    return response()->json(['message' => 'API of Auths is working']);
 });
 

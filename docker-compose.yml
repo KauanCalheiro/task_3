@@ -19,6 +19,26 @@ services:
     expose:
       - 80
 
+  php-user:
+    container_name: php-user
+    restart: always
+    build:
+      context: ./user
+      dockerfile: Dockerfile
+    environment:
+      DB_CONNECTION: pgsql
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: postgres
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+    volumes:
+      - ./user:/var/www/html
+    networks:
+      - task-3-network
+    expose:
+      - 80
+
   ngix:
     container_name: nginx
     restart: always
@@ -27,6 +47,7 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - php-auth
+      - php-user
     ports:
       - "80:80"
     volumes:
