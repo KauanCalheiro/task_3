@@ -1,10 +1,32 @@
 services:
+  postgres:
+    # psql -hlocalhost -p5000 -Upostgres -dpostgres
+    container_name: postgres
+    restart: always
+    build: 
+      context: ./postgres
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5000:5432"
+    expose:
+      - 5432
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+    networks:
+      - task-3-network
+
   php-auth:
     container_name: php-auth
     restart: always
     build:
       context: ./auth
       dockerfile: Dockerfile
+    depends_on:
+      - postgres
     environment:
       DB_CONNECTION: pgsql
       DB_HOST: postgres
@@ -14,7 +36,7 @@ services:
       DB_PASSWORD: postgres
     volumes:
       - ./auth:/var/www/html
-      - vendor-auth:/var/www/html/vendor
+      - /var/www/html/vendor
     networks:
       - task-3-network
     expose:
@@ -26,6 +48,8 @@ services:
     build:
       context: ./user
       dockerfile: Dockerfile
+    depends_on:
+      - postgres
     environment:
       DB_CONNECTION: pgsql
       DB_HOST: postgres
@@ -35,7 +59,7 @@ services:
       DB_PASSWORD: postgres
     volumes:
       - ./user:/var/www/html
-      - vendor-user:/var/www/html/vendor
+      - /var/www/html/vendor
     networks:
       - task-3-network
     expose:
@@ -57,30 +81,6 @@ services:
     networks:
       - task-3-network
 
-  postgres:
-    # psql -hlocalhost -p5000 -Upostgres -dpostgres
-    container_name: postgres
-    restart: always
-    build: 
-      context: ./postgres
-      dockerfile: Dockerfile
-    environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    ports:
-      - "5000:5432"
-    expose:
-      - 5432
-    volumes:
-      - ./postgres/data:/var/lib/postgresql/data
-    networks:
-      - task-3-network
-
 networks:
   task-3-network:
     driver: bridge
-
-volumes:
-  vendor-auth:
-  vendor-user:
