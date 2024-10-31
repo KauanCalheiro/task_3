@@ -24,7 +24,7 @@ services:
     restart: always
     build:
       context: ./auth
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     depends_on:
       - postgres
     environment:
@@ -36,7 +36,6 @@ services:
       DB_PASSWORD: postgres
     volumes:
       - ./auth:/var/www/html
-      - /var/www/html/vendor
     networks:
       - task-3-network
     expose:
@@ -47,7 +46,7 @@ services:
     restart: always
     build:
       context: ./user
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     depends_on:
       - postgres
     environment:
@@ -59,7 +58,6 @@ services:
       DB_PASSWORD: postgres
     volumes:
       - ./user:/var/www/html
-      - /var/www/html/vendor
     networks:
       - task-3-network
     expose:
