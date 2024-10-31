@@ -4,7 +4,6 @@ WORKDIR /var/www/html
 
 COPY . .
 COPY ./apache.conf /etc/apache2/sites-available/000-default.conf
-COPY .env.example .env
 
 RUN apt-get update && apt-get install -y \
     libpq-dev \
@@ -25,9 +24,5 @@ RUN curl -sS https://getcomposer.org/installer -o composer-setup.php \
 RUN a2enmod rewrite
 
 RUN composer install
-
-RUN php artisan key:generate
-RUN php artisan migrate
-RUN php artisan db:seed
 
 CMD ["/var/www/html/afterbuild.sh"]
