@@ -3,47 +3,42 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class User extends Authenticatable
+class User extends Model
 {
-    use HasFactory, Notifiable;
+    use HasFactory, SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    const ACTIVE = 1;
+
     protected $fillable = [
-        'nome',
-        'email',
-        'senha',
-        'dt_nascimento',
+        "name",
+        "email",
+        "password",
+        'dt_birth',
         'cpf',
-        'rg'
+        'rg',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
-        'senha',
-        'remember_token',
+        'password',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+        'created_by',
+        'updated_by',
+        'deleted_by',
+        'version',
+        'is_active',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    const RULES = [
+        'name'     => 'required|max:255',
+        'email'    => 'required|email|max:255|unique:users',
+        'password' => 'min:8',
+        'dt_birth' => 'date',
+        'cpf'      => 'size:11|unique:users',
+        'rg'       => 'size:9|unique:users',
+    ];
 }
