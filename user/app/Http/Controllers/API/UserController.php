@@ -10,8 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
-    public static function index(Request $request)
-    {
+    public static function index(Request $request){
         try {
             return response()->json( User::where("is_active", User::ACTIVE)->get(), Response::HTTP_OK );
         }
@@ -20,19 +19,29 @@ class UserController extends Controller
         }
     }
 
-    public static function show(int|string $id)
-    {
+    public static function show(int|string $id){
         try {
-            return response()->json( User::where("id", $id)->where("is_active", User::ACTIVE)->first(), Response::HTTP_OK );
+            return response()->json( User::where("id", $id)->where("is_active", User::ACTIVE)->firstOrFail(), Response::HTTP_OK );
         }
         catch (Exception $e) {
             return response()->json( $e, Response::HTTP_INTERNAL_SERVER_ERROR );
         }
     }
 
+    public static function login(int|string $id){
+        try {
+            $user = User::where("id", $id)->where("is_active", User::ACTIVE)->firstOrFail();
+            return response()->json( [
+                'id'       => $user->id,
+                'password' => $user->password
+            ], Response::HTTP_OK );
+        }
+        catch (Exception $e) {
+            return response()->json( $e, Response::HTTP_INTERNAL_SERVER_ERROR );
+        }
+    }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         try {
             $validatedData = $request->validate(User::RULES);
             $validatedData['password'] = md5($validatedData['password']);
@@ -43,8 +52,7 @@ class UserController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
         // try {
         //     $validatedData = $request->validate(User::RULES);
         //     $validatedData['password'] = md5($validatedData['password']);
@@ -55,8 +63,7 @@ class UserController extends Controller
         // }
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id){
         // $user = User::find($id);
         // if (!$user) {
         //     return response()->json(['message' => 'User not found'], 404);

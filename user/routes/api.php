@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\UserController;
+use App\Http\Middleware\TrustKey;
 
 Route::get('/status', function () {
     return response()->json(['message' => 'API of Users is working']);
@@ -12,4 +13,8 @@ Route::prefix('/')->group(function () {
     Route::post  ('',     [UserController::class, 'store' ]);
     Route::put   ('{id}', [UserController::class, 'update']);
     Route::delete('',     [UserController::class, 'delete']);
+
+    Route::middleware(TrustKey::class)->group(function () {
+        Route::get   ('{id}/login', [UserController::class, 'login'  ]);
+    });
 });
