@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\ApiService;
+use App\Services\AuthService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -25,8 +26,7 @@ class AuthController extends Controller
             }
 
             $response = Http::withHeader('Authorization', $request->header('Authorization'))
-            ->get("http://php-user:80/api/2/login");
-
+            ->get("http://php-user:80/api/$refUser/login");
 
             if($response->successful() == false) {
                 throw new Exception("User not found", Response::HTTP_BAD_REQUEST);
@@ -38,8 +38,7 @@ class AuthController extends Controller
                 throw new Exception("Invalid password", Response::HTTP_BAD_REQUEST);
             }
 
-            // TODO: generate a token and return it
-            return ApiService::response([]);
+            return ApiService::response(AuthService::createAuth($user->id));
         } 
         catch (Exception $e) {
             return ApiService::responseError($e);
@@ -48,13 +47,33 @@ class AuthController extends Controller
 
     public static function logout(Request $request)
     {
-        return response()->json(['message'=> 'logout']);
-        // desautenticar usuario
+        try {
+            $token = $request->bearerToken();
+
+            if (empty($token)) {
+                throw new Exception('"token" is required', Response::HTTP_BAD_REQUEST);
+            }
+
+            AuthService::deleteAuth($token);
+
+            return ApiService::response(['message' => 'Logout successful']);
+        }
+        catch (Exception $e) {
+            return ApiService::responseError($e);
+        }
     }
 
     public static function validate(Request $request)
     {
-        return response()->json(['message'=> 'validate']);
-        // validar token
+        try {
+            $token = $request->bearerToken();
+
+            $isValidToken = AuthService::isValidToken($token);
+
+            return ApiService::response(['valid' => $isValidToken]);
+        }
+        catch (Exception $e) {
+            return ApiService::responseError($e);
+        }
     }
 }
