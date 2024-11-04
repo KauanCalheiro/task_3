@@ -32,14 +32,14 @@ class AuthController extends Controller
                 throw new Exception("User not found", Response::HTTP_BAD_REQUEST);
             }
 
-            $user = json_decode($response->getBody()->getContents());
+            $user = (json_decode($response->getBody()->getContents()))->payload;
 
             if($user->password != $password) {
                 throw new Exception("Invalid password", Response::HTTP_BAD_REQUEST);
             }
 
             return ApiService::response(AuthService::createAuth($user->id));
-        } 
+        }
         catch (Exception $e) {
             return ApiService::responseError($e);
         }
@@ -66,11 +66,16 @@ class AuthController extends Controller
     public static function validate(Request $request)
     {
         try {
-            $token = $request->bearerToken();
+            $token = $request->input('token');
 
             $isValidToken = AuthService::isValidToken($token);
 
-            return ApiService::response(['valid' => $isValidToken]);
+            return ApiService::response([
+                'valid' => $isValidToken,
+                'ref_user' => $isValidToken
+                    ? AuthService::getUserByToken($token)
+                    : null,
+            ]);
         }
         catch (Exception $e) {
             return ApiService::responseError($e);

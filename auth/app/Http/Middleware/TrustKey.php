@@ -20,7 +20,7 @@ class TrustKey
             $token = $request->bearerToken();
 
             if (empty($token)) {
-                throw new Exception('Token is required');
+                throw new Exception('Token is required 1');
             }
 
             $trustKey = base64_decode($_ENV['TRUST_KEY']);

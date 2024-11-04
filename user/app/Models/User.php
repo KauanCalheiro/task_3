@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\Versionable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, Versionable;
 
     const ACTIVE = 1;
 
@@ -34,11 +35,30 @@ class User extends Model
     ];
 
     const RULES = [
-        'name'     => 'required|max:255',
-        'email'    => 'required|email|max:255|unique:users',
+        'name'     => 'max:255',
+        'email'    => 'email|max:255',
         'password' => 'min:8',
         'dt_birth' => 'date',
-        'cpf'      => 'size:11|unique:users',
-        'rg'       => 'size:9|unique:users',
+        'cpf'      => 'size:11',
+        'rg'       => 'size:9',
     ];
+
+    const ADD_RULES_AT_CREATE = [
+        'name'  => '|required',
+        'email' => '|required|unique:users',
+        'cpf'   => '|unique:users',
+        'rg'    => '|unique:users',
+    ];
+
+    public static function RULES($isCreating = true){
+        $rules = self::RULES;
+
+        if($isCreating){
+            foreach(self::ADD_RULES_AT_CREATE as $key => $addRule){
+                $rules[$key] .= $addRule;
+            }
+        }
+
+        return $rules;
+    }
 }

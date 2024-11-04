@@ -58,7 +58,6 @@ CREATE TABLE IF NOT EXISTS "users" (
 
 CREATE TABLE IF NOT EXISTS "auths" (
     "id" SERIAL PRIMARY KEY,
-    "ref_previous" INTEGER,
     "ref_user" INTEGER NOT NULL,
     "token" TEXT NOT NULL,
     "dt_expires" TIMESTAMP NOT NULL,
@@ -76,6 +75,6 @@ CREATE TABLE IF NOT EXISTS "auths" (
 );
 
 
-INSERT INTO "users" ("id", "name", "email", "password", "dt_birth", "created_by") 
-VALUES (1, 'Admin', 'admin@admin.com', md5('admin'), '2000-01-01', 1)
+INSERT INTO "users" ("id", "name", "email", "password", "dt_birth", "ref_origin_register", "created_by") 
+VALUES (1, 'Admin', 'admin@admin.com', md5('admin'), '2000-01-01', 1, 1)
 ON CONFLICT DO NOTHING;

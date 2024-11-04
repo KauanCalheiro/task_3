@@ -10,10 +10,9 @@ Route::get('/status', function () {
 
 Route::middleware(TrustKey::class)->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/validate', [AuthController::class, 'validate']);
 });
 
 Route::middleware(ValidateToken::class)->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 });
-
-Route::post('/validate', [AuthController::class, 'validate']);
