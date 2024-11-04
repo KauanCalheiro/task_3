@@ -63,7 +63,9 @@ class UserController extends Controller
                 $validatedData['password'] = md5($validatedData['password']);
             }
 
-            $user = User::where('id', $id)->firstOrFail();
+            $user = User::where('id', $id)
+                ->where('deleted_at', null)
+                ->firstOrFail();
 
             if(!$user->update($validatedData)) {
                 throw new Exception("Error on update user", Response::HTTP_INTERNAL_SERVER_ERROR);
