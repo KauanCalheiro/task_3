@@ -64,6 +64,28 @@ services:
     expose:
       - 80
 
+  node-event:
+    container_name: node-event
+    restart: always
+    build:
+      context: ./event
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - postgres
+    environment:
+      DB_CONNECTION: postgres
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: postgres
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+    volumes:
+      - ./event:/app
+    expose:
+      - 3000
+    networks:
+      - task-3-network
+
   ngix:
     container_name: nginx
     restart: always
