@@ -57,21 +57,16 @@ class UserController extends Controller
 
     public function update(Request $request, $id){
         try {
-            $validatedData = $request->validate(User::RULES(false));
+            $data = $request->validate(User::RULES(false));
 
-            if($request->has('password')) {
-                $validatedData['password'] = md5($validatedData['password']);
+            if($request->filled('password')) {
+                $data['password'] = md5($data['password']);
             }
 
-            $user = User::where('id', $id)
-                ->where('deleted_at', null)
-                ->firstOrFail();
+            $user = User::findOrFail($id);
+            $user->updateOrFail($data);
 
-            if(!$user->update($validatedData)) {
-                throw new Exception("Error on update user", Response::HTTP_INTERNAL_SERVER_ERROR);
-            }
-
-            return ApiService::response([]);
+            return ApiService::response($user);
         }
         catch (Exception $e) {
             return ApiService::responseError( $e );
@@ -80,14 +75,10 @@ class UserController extends Controller
 
     public function destroy($id){
         try {
-            $user = User::find($id);
-            if (!$user) {
-                return response()->json(['message' => 'User not found'], 404);
-            }
-
+            $user = User::findOrFail($id);
             $user->delete();
 
-            return ApiService::response([]);
+            return ApiService::response( $user );
         }
         catch (Exception $e) {
             return ApiService::responseError( $e );
