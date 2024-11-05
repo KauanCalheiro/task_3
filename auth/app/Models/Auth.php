@@ -2,26 +2,22 @@
 
 namespace App\Models;
 
-use App\Traits\Versionable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Auth extends Model {
-    use HasFactory, SoftDeletes, Versionable;
+    use HasFactory, SoftDeletes;
 
-    const TOKEN_LIFETIME = 2 * ( 60 * 60 );
-
-    const ACTIVE = true;
-    const INACTIVE = false;
-    const REF_SYSTEM_USER = 0;
+    protected $table = "auths";
 
     protected $fillable = [
         'ref_user',
-        'token',
-        'dt_expires',
-        'created_by',
-        'updated_by',
-        'deleted_by',
+    ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 }

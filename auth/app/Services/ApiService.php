@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\ValidationException;
 
 class ApiService
 {
@@ -29,7 +30,7 @@ class ApiService
      *
      * @date 2024-06-08
      */
-    public static function response(array|object $data, string $message = "Request successfully", int $code = 200): Response|ResponseFactory
+    public static function response(array|object $data = [], string $message = "Request successfully", int $code = 200): Response|ResponseFactory
     {
         return response(
             [
@@ -45,7 +46,7 @@ class ApiService
     /**
      * Return a JSON response with the error message passed
      *
-     * @param \Exception $e
+     * @param \Exception|\Illuminate\Validation\ValidationException $e
      * @param integer|null $code
      *
      * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
@@ -54,7 +55,7 @@ class ApiService
      *
      * @date 2024-06-08
      */
-    public static function responseError(Exception $e, ?int $code = NULL): Response|ResponseFactory
+    public static function responseError(Exception|ValidationException $e, int|string $code = NULL): Response|ResponseFactory
     {
         if ($e->getCode() != 0 && empty($code) && self::isValidHttpCode($e->getCode()))
         {
@@ -63,10 +64,15 @@ class ApiService
 
         $code = self::isValidHttpCode($code) ? $code : self::DEFAULT_ERROR_CODE;
 
+        $message = $e instanceof ValidationException 
+            ? collect($e->errors())
+            ->toArray()
+            : $e->getMessage();
+
         return response(
             [
                 self::RESPONSE_COLLUMN_WITH_SUCCESS => false,
-                self::RESPONSE_COLLUMN_WITH_MESSAGE => $e->getMessage(),
+                self::RESPONSE_COLLUMN_WITH_MESSAGE => $message,
                 self::RESPONSE_COLLUMN_WITH_DATA    => null,
                 self::RESPONSE_COLLUMN_WITH_COUNT   => 0
             ],
@@ -85,12 +91,18 @@ class ApiService
      *
      * @date 2024-06-12
      */
-    private static function isValidHttpCode(?int $code): bool
+    private static function isValidHttpCode(int|string $code = null): bool
     {
         if (empty($code))
         {
             return false;
         }
+
+        if(is_string($code))
+        {
+            return false;
+        }
+
         return $code >= 100 && $code <= 599;
     }
 }
