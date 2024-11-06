@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import eventRouter from './InscriptionRouter';
+import inscriptionRouter from './InscriptionRouter';
 
 const router = Router();
 
 router.get('/status', (_, res) => {
-    res.send({ message: 'API of Event is working' });
+    res.send({ message: 'API of Inscription is working' });
 });
 
-router.use('/', eventRouter);
+router.use('/', inscriptionRouter);
 
 export default router;
