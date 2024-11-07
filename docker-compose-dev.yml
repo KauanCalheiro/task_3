@@ -7,9 +7,9 @@ services:
       context: ./postgres
       dockerfile: Dockerfile
     environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
       - "5000:5432"
     expose:
@@ -29,12 +29,13 @@ services:
     depends_on:
       - postgres
     environment:
-      DB_CONNECTION: pgsql
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_DATABASE: postgres
-      DB_USERNAME: postgres
-      DB_PASSWORD: postgres
+      DB_CONNECTION: ${DB_CONNECTION_LARAVEL}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      TRUST_KEY: ${TRUST_KEY}
     volumes:
       - ./auth:/var/www/html
     networks:
@@ -51,12 +52,13 @@ services:
     depends_on:
       - postgres
     environment:
-      DB_CONNECTION: pgsql
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_DATABASE: postgres
-      DB_USERNAME: postgres
-      DB_PASSWORD: postgres
+      DB_CONNECTION: ${DB_CONNECTION_LARAVEL}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      TRUST_KEY: ${TRUST_KEY}
     volumes:
       - ./user:/var/www/html
     networks:
@@ -74,11 +76,12 @@ services:
       - postgres
     environment:
       DB_CONNECTION: postgres
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_DATABASE: postgres
-      DB_USERNAME: postgres
-      DB_PASSWORD: postgres
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      TRUST_KEY: ${TRUST_KEY}
     volumes:
       - ./event:/app
     expose:
@@ -96,11 +99,12 @@ services:
       - postgres
     environment:
       DB_CONNECTION: postgres
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_DATABASE: postgres
-      DB_USERNAME: postgres
-      DB_PASSWORD: postgres
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      TRUST_KEY: ${TRUST_KEY}
     volumes:
       - ./inscription:/app
     expose:
@@ -117,6 +121,8 @@ services:
     depends_on:
       - php-auth
       - php-user
+      - node-event
+      - node-inscription
     ports:
       - "80:80"
     volumes:
