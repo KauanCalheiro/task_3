@@ -97,7 +97,7 @@ services:
     networks:
       - task-3-network
 
-  ngix:
+  nginx:
     container_name: nginx
     restart: always
     build:
