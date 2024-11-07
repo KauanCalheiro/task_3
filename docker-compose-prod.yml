@@ -1,6 +1,5 @@
 services:
   postgres:
-    # psql -hlocalhost -p5000 -Upostgres -dpostgres
     container_name: postgres
     restart: always
     build: 
@@ -10,8 +9,6 @@ services:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-    # ports:
-    #   - "5000:5432"
     expose:
       - 5432
     volumes:
@@ -59,6 +56,46 @@ services:
       - task-3-network
     expose:
       - 80
+
+  node-event:
+    container_name: node-event
+    restart: always
+    build:
+      context: ./event
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - postgres
+    environment:
+      DB_CONNECTION: postgres
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: postgres
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+    expose:
+      - 3000
+    networks:
+      - task-3-network
+
+  node-inscription:
+    container_name: node-inscription
+    restart: always
+    build:
+      context: ./inscription
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - postgres
+    environment:
+      DB_CONNECTION: postgres
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: postgres
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+    expose:
+      - 3000
+    networks:
+      - task-3-network
 
   ngix:
     container_name: nginx

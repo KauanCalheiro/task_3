@@ -1,33 +1,53 @@
 import { Request, Response } from "express";
 import Event from "../models/Events";
+import { Error } from "sequelize";
 
 class EventController {
     static async show(_: Request, res: Response) {
-        console.log('EventController.show');
-        const events = await Event.findAll();
-        return res.json(events);
+        try {
+            const events = await Event.findAll();
+            return res.json(events);
+        } catch (error: Error | any) {
+            return res.status(500).json({ error: error.message });
+        }
     }
 
     static async index(req: Request, res: Response) {
-        const event = await Event.findByPk(req.params.id);
-        return res.json(event);
+        try {
+            const event = await Event.findByPk(req.params.id);
+            return res.json(event);
+        } catch (error: Error | any) {
+            return res.status(500).json({ error: error.message });
+        }
     }
 
     static async store(req: Request, res: Response) {
-        const event = await Event.create(req.body);
-        return res.json(event);
+        try {
+            const event = await Event.create(req.body);
+            return res.json(event);
+        } catch (error: Error | any) {
+            return res.status(500).json({ error: error.message });
+        }
     }
 
     static async update(req: Request, res: Response) {
-        const event = await Event.findByPk(req.params.id);
-        await event?.update(req.body);
-        return res.json(event);
+        try {
+            const event = await Event.findByPk(req.params.id);
+            await event?.update(req.body);
+            return res.json(event);
+        } catch (error: Error | any) {
+            return res.status(500).json({ error: error.message });
+        }
     }
 
     static async destroy(req: Request, res: Response) {
-        const event = await Event.findByPk(req.params.id);
-        await event?.destroy();
-        return res.json(event);
+        try {
+            const event = await Event.findByPk(req.params.id);
+            await event?.destroy();
+            return res.json(event);
+        } catch (error: Error | any) {
+            return res.status(500).json({ error: error.message });
+        }
     }
 }
 

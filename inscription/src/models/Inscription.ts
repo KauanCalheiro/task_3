@@ -41,7 +41,7 @@ Inscription.init({
         allowNull: false
     }
 }, {
-    tableName: 'events',
+    tableName: 'inscriptions',
     timestamps: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',
