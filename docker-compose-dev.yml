@@ -112,6 +112,29 @@ services:
     networks:
       - task-3-network
 
+  node-attendance:
+    container_name: node-attendance
+    restart: always
+    build:
+      context: ./attendance
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - postgres
+    environment:
+      DB_CONNECTION: postgres
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      TRUST_KEY: ${TRUST_KEY}
+    volumes:
+      - ./attendance:/app
+    expose:
+      - 3000
+    networks:
+      - task-3-network
+
   nginx:
     container_name: nginx
     restart: always
@@ -123,6 +146,7 @@ services:
       - php-user
       - node-event
       - node-inscription
+      - node-attendance
     ports:
       - "80:80"
     volumes:
