@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS "inscriptions" (
     "deleted_at" TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS "presences" (
+CREATE TABLE IF NOT EXISTS "attendance" (
     "id" SERIAL PRIMARY KEY,
     "ref_inscription" INTEGER NOT NULL,
     "dt_presence" TIMESTAMP NOT NULL DEFAULT NOW(),
