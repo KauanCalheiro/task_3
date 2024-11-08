@@ -17,6 +17,24 @@ services:
     networks:
       - task-3-network
 
+  postgres-logs:
+    container_name: postgres-logs
+    restart: always
+    build: 
+      context: ./postgres-logs
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_DB: ${DB_LOG_DATABASE}
+      POSTGRES_USER: ${DB_LOG_USERNAME}
+      POSTGRES_PASSWORD: ${DB_LOG_PASSWORD}
+    expose:
+      - 5432
+    volumes:
+      - ./postgres-logs/data:/var/lib/postgresql/data
+      - ./postgres-logs/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - task-3-network
+
   php-auth:
     container_name: php-auth
     restart: always
@@ -25,6 +43,7 @@ services:
       dockerfile: Dockerfile.prod
     depends_on:
       - postgres
+      - php-log
     environment:
       DB_CONNECTION: ${DB_CONNECTION_LARAVEL}
       DB_HOST: ${DB_HOST}
@@ -46,6 +65,7 @@ services:
       dockerfile: Dockerfile.prod
     depends_on:
       - postgres
+      - php-log
     environment:
       DB_CONNECTION: ${DB_CONNECTION_LARAVEL}
       DB_HOST: ${DB_HOST}
@@ -53,6 +73,27 @@ services:
       DB_DATABASE: ${DB_DATABASE}
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
+      TRUST_KEY: ${TRUST_KEY}
+    networks:
+      - task-3-network
+    expose:
+      - 80
+
+  php-log:
+    container_name: php-log
+    restart: always
+    build:
+      context: ./log
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - postgres-logs
+    environment:
+      DB_CONNECTION: ${DB_LOG_CONNECTION_LARAVEL}
+      DB_HOST: ${DB_LOG_HOST}
+      DB_PORT: ${DB_LOG_PORT}
+      DB_DATABASE: ${DB_LOG_DATABASE}
+      DB_USERNAME: ${DB_LOG_USERNAME}
+      DB_PASSWORD: ${DB_LOG_PASSWORD}
       TRUST_KEY: ${TRUST_KEY}
     networks:
       - task-3-network
@@ -67,6 +108,7 @@ services:
       dockerfile: Dockerfile.dev
     depends_on:
       - postgres
+      - php-log
     environment:
       DB_CONNECTION: ${DB_CONNECTION_EXPRESS}
       DB_HOST: ${DB_HOST}
@@ -88,6 +130,7 @@ services:
       dockerfile: Dockerfile.dev
     depends_on:
       - postgres
+      - php-log
     environment:
       DB_CONNECTION: ${DB_CONNECTION_EXPRESS}
       DB_HOST: ${DB_HOST}
@@ -109,6 +152,7 @@ services:
       dockerfile: Dockerfile.dev
     depends_on:
       - postgres
+      - php-log
     environment:
       DB_CONNECTION: postgres
       DB_HOST: ${DB_HOST}
