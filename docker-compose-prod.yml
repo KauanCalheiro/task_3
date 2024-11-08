@@ -68,7 +68,7 @@ services:
     depends_on:
       - postgres
     environment:
-      DB_CONNECTION: ${DB_CONNECTION_LARAVEL}
+      DB_CONNECTION: ${DB_CONNECTION_EXPRESS}
       DB_HOST: ${DB_HOST}
       DB_PORT: ${DB_PORT}
       DB_DATABASE: ${DB_DATABASE}
@@ -89,7 +89,7 @@ services:
     depends_on:
       - postgres
     environment:
-      DB_CONNECTION: ${DB_CONNECTION_LARAVEL}
+      DB_CONNECTION: ${DB_CONNECTION_EXPRESS}
       DB_HOST: ${DB_HOST}
       DB_PORT: ${DB_PORT}
       DB_DATABASE: ${DB_DATABASE}
