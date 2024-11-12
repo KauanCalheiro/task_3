@@ -84,7 +84,7 @@ services:
     restart: always
     build:
       context: ./log
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
     depends_on:
       - postgres-logs
     environment:
@@ -105,7 +105,7 @@ services:
     restart: always
     build:
       context: ./event
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
     depends_on:
       - postgres
       - php-log
@@ -127,7 +127,7 @@ services:
     restart: always
     build:
       context: ./inscription
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
     depends_on:
       - postgres
       - php-log
@@ -149,7 +149,7 @@ services:
     restart: always
     build:
       context: ./attendance
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
     depends_on:
       - postgres
       - php-log
