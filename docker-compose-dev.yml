@@ -122,7 +122,7 @@ services:
       - postgres
       - php-log
     environment:
-      DB_CONNECTION: postgres
+      DB_CONNECTION: ${DB_CONNECTION_EXPRESS}
       DB_HOST: ${DB_HOST}
       DB_PORT: ${DB_PORT}
       DB_DATABASE: ${DB_DATABASE}
@@ -146,7 +146,7 @@ services:
       - postgres
       - php-log
     environment:
-      DB_CONNECTION: postgres
+      DB_CONNECTION: ${DB_CONNECTION_EXPRESS}
       DB_HOST: ${DB_HOST}
       DB_PORT: ${DB_PORT}
       DB_DATABASE: ${DB_DATABASE}
@@ -170,7 +170,7 @@ services:
       - postgres
       - php-log
     environment:
-      DB_CONNECTION: postgres
+      DB_CONNECTION: ${DB_CONNECTION_EXPRESS}
       DB_HOST: ${DB_HOST}
       DB_PORT: ${DB_PORT}
       DB_DATABASE: ${DB_DATABASE}
