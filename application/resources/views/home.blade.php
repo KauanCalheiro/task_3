@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="home-container">
     <div class="welcome-section text-center">
         <h1>Eventos</h1>
