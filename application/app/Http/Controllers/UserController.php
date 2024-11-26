@@ -5,11 +5,23 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     public function index()
     {
+        // $users = User::all();
+
+        // foreach ($users as $user) {
+        //     // Verifique se a senha já foi criptografada corretamente
+        //     if (Hash::needsRehash($user->password)) {
+        //         // Se não estiver no formato Bcrypt, recriptografe a senha
+        //         $user->password = Hash::make($user->password);
+        //         $user->save();
+        //     }
+        // }
+
         $users = User::all();
 
         return view('adm.users.index', compact('users'));
@@ -41,7 +53,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('users.edit', compact('user'));
+        return view('adm.users.edit', compact('user'));
     }
 
     public function update(Request $request, $id)

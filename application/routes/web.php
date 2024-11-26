@@ -3,14 +3,24 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
-Route::get('/', function () {
-    return view('home');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', function () {
+        return view('home');
+    });
+
+    Route::get('/adm', function () {
+        return view('adm/adm');
+    });
+
+    Route::resource('adm/users', UserController::class);
+
+    // Outras rotas que exigem autenticação...
 });
 
 
-Route::get('/adm', function () {
-    return view('adm/adm');
-});
+
+
+
 
 // Route::get('/adm/users', function () {
 //     return view('adm/users/index');
@@ -21,7 +31,6 @@ Route::get('/adm', function () {
 //     Route::resource('users', UserController::class);
 // });
 
-Route::resource('adm/users', UserController::class);
 
 
 
