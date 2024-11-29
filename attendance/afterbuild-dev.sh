@@ -1,8 +1,8 @@
 #!/bin/bash
 
-cd /app
+cd /usr/src/app
 
-chmod -R 777 /app
+chmod -R 777 /usr/src/app
 
 npm install
 

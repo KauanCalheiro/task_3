@@ -12,6 +12,30 @@ class InscriptionController {
         }
     }
 
+    static async getInscriptionsForUser(req: Request, res: Response)
+    {
+        try 
+        {
+            const userId = req.params.ref_user;
+
+            const inscriptions = await Inscription.findAll({
+                where: {
+                ref_user: userId,
+                },
+            });
+            if (inscriptions.length === 0) {
+                return res.status(404).json({ message: 'No inscriptions found for this user.' });
+            }
+        
+            return res.json(inscriptions);
+
+        } 
+        catch (error: Error | any) 
+        {
+            return res.status(500).json({ error: error.message });
+        }
+    }
+
     static async index(req: Request, res: Response) {
         try {
             const event = await Inscription.findByPk(req.params.id);

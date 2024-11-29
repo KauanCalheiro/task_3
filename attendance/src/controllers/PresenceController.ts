@@ -12,6 +12,18 @@ class AttendanceController {
         }
     }
 
+    static async havePresenceForInscription(req: Request, res: Response) {
+        try {
+            const attendances = await Attendance.findAll({
+                where: { ref_inscription: req.params.id }
+            });
+
+            return res.json(attendances);
+        } catch (error: Error | any) {
+            return res.status(500).json({ error: error.message });
+        }
+    }
+
     static async index(req: Request, res: Response) {
         try {
             const attendance = await Attendance.findByPk(req.params.id);

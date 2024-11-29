@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class UserController extends Controller
 {
@@ -22,7 +23,13 @@ class UserController extends Controller
         //     }
         // }
 
-        $users = User::all();
+        $users = Http::withHeaders([
+            'Authorization' => 'Bearer a2FrYXVfYm9tYmFkYW8='
+        ])->get('http://localhost:80/api/user');
+
+        $users = collect($users['payload'])->map(function ($user) {
+            return (object) $user;
+        });
 
         return view('adm.users.index', compact('users'));
     }

@@ -49,5 +49,4 @@ class User extends Authenticatable
             ? array_merge(self::BASE_RULES, self::CREATE_RULES) 
             : self::BASE_RULES;
     }
-
 }

@@ -14,7 +14,6 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Email</th>
-                <th>Data de Criação</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -24,7 +23,6 @@
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ $user->created_at }}</td>
                     <td>
                         <!-- Botão Editar -->
                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">Editar</a>

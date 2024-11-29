@@ -1,9 +1,9 @@
 #!/bin/bash
 
-cd /app
+cd /usr/src/app
 
-chown -R www-data:www-data /app
-chmod -R 777 /app
+chown -R www-data:www-data /usr/src/app
+chmod -R 777 /usr/src/app
 
 npm install
 

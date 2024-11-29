@@ -6,17 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Event extends Model
+class Inscription extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        "name",
-        "description",
-        "dt_init",
-        "dt_end",
-        "location",
-        "capacity",
+        "ref_user",
+        "ref_event",
+        "dt_inscription"
     ];
 
     protected $hidden = [
@@ -27,12 +24,9 @@ class Event extends Model
 
 
     const CREATE_RULES = [
-        'name'  => ['required'],
-        'description'  => ['required'],
-        'dt_init' => ['required'],
-        'dt_end' => ['required'],
-        'capacity' => ['required']
-        
+        "ref_user" => ['required'],
+        "ref_event" => ['required'],
+        "dt_inscription" => ['required']
     ];
 
     public static function RULES($isCreating = true){

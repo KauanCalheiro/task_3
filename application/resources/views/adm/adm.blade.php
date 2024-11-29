@@ -7,43 +7,38 @@
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>#ID</th>
-                    <th>Data</th>
-                    <th>Descrição</th>
-                    <th>Valor</th>
-                    <th>Status</th>
+                    <th>Código</th>
+                    <th>Pessoa</th>
+                    <th>Evento</th>
+                    <th>Data Inscrição</th>
+                    <th>Açoes</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Exemplo de uma transação -->
-                <tr>
-                    <td>#12345</td>
-                    <td>24/11/2024</td>
-                    <td>Compra no supermercado</td>
-                    <td>R$ 150,00</td>
-                    <td><span class="status completed">Concluída</span></td>
-                </tr>
-                <tr>
-                    <td>#12346</td>
-                    <td>23/11/2024</td>
-                    <td>Assinatura de software</td>
-                    <td>R$ 299,99</td>
-                    <td><span class="status pending">Pendente</span></td>
-                </tr>
-                <tr>
-                    <td>#12347</td>
-                    <td>22/11/2024</td>
-                    <td>Transferência bancária</td>
-                    <td>R$ 500,00</td>
-                    <td><span class="status failed">Falhou</span></td>
-                </tr>
-                <tr>
-                    <td>#12348</td>
-                    <td>21/11/2024</td>
-                    <td>Compra de eletrônicos</td>
-                    <td>R$ 1.200,00</td>
-                    <td><span class="status in-progress">Em Progresso</span></td>
-                </tr>
+                @foreach ($inscriptions as $inscription)
+                    <tr>
+                        <td>{{ $inscription->id }}</td>
+                        <td>{{ $inscription->ref_user}}</td>
+                        <td>{{ $inscription->ref_event}}</td>
+                        <td>{{ $inscription->dt_inscription }}</td>
+                        <td>
+                        @if (!$inscription->fl_presenca)
+                            <form action="{{ route('presences.store', $inscription->id) }}" method="POST" style="width: 100%; text-align:center;">
+                                @csrf
+                                <button type="submit" style="background-color: #2192FF; height: 30px; border: none; padding: 4px; width: 80%; color: #fff; font-size: 1rem; font-weight: bold; border-radius: 4px;">
+                                    Registrar presença
+                                </button>
+                            </form>
+                            @else
+                            <div style="width:100%; text-align:center;">
+                                <button style="background-color: red; height: 30px; border: none; padding: 4px; width: 80%; color: #fff; font-size: 1rem; font-weight: bold; border-radius: 4px;">
+                                    Presença registrada
+                                </button>
+                            </div>
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

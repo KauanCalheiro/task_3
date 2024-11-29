@@ -130,7 +130,7 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       TRUST_KEY: ${TRUST_KEY}
     volumes:
-      - ./event:/app
+      - ./event:/usr/src/app
     expose:
       - 3000
     networks:
@@ -154,7 +154,7 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       TRUST_KEY: ${TRUST_KEY}
     volumes:
-      - ./inscription:/app
+      - ./inscription:/usr/src/app
     expose:
       - 3000
     networks:
@@ -178,7 +178,7 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       TRUST_KEY: ${TRUST_KEY}
     volumes:
-      - ./attendance:/app
+      - ./attendance:/usr/src/app
     expose:
       - 3000
     networks:

@@ -2,10 +2,9 @@
 
 @section('content')
 <div class="container">
-    <h1>Lista de Inscrições</h1>
+    <h1>Lista de Eventos</h1>
 
-    <!-- Botão para adicionar um novo usuário -->
-    <a href="{{ route('users.create') }}" class="btn btn-primary mb-3">Adicionar Novo Usuário</a>
+    <a href="{{ route('events.create') }}" class="btn btn-primary mb-3">Adicionar Novo Evento</a>
 
     <!-- Tabela com a listagem de usuários -->
     <table class="table table-bordered table-hover">
@@ -13,24 +12,30 @@
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <th>Email</th>
-                <th>Data de Criação</th>
+                <th>Descrição</th>
+                <th>Capacidade</th>
+                <th>Local</th>
+                <th>Dt Inicio</th>
+                <th>Dt Fim</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($users as $user)
+            @foreach ($events as $event)
                 <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->created_at }}</td>
+                    <td>{{ $event->id }}</td>
+                    <td>{{ $event->name }}</td>
+                    <td>{{ $event->description }}</td>
+                    <td>{{ $event->capacity }}</td>
+                    <td>{{ $event->location }}</td>
+                    <td>{{ $event->dt_init }}</td>
+                    <td>{{ $event->dt_end }}</td>
                     <td>
                         <!-- Botão Editar -->
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="{{ route('events.edit', $event->id) }}" class="btn btn-warning btn-sm">Editar</a>
 
                         <!-- Botão Deletar -->
-                        <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('events.destroy', $event->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir este usuário?')">Deletar</button>

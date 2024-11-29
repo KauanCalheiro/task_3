@@ -1,7 +1,11 @@
 FROM node:22.11.0
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
 COPY . .
 
-CMD ["/app/afterbuild-dev.sh"]
+# Garante permissões de execução para o script
+RUN chmod +x /usr/src/app/afterbuild-dev.sh
+
+# Comando para rodar o script
+CMD ["/bin/bash", "/usr/src/app/afterbuild-dev.sh"]

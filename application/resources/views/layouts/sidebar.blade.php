@@ -6,7 +6,7 @@
     <ul class="sidebar-menu">
         <!-- <li><a href="">Dashboard</a></li> -->
         <li><a href="/adm/users">Usuários</a></li>
-        <li><a href="/adm/users">Eventos</a></li>
+        <li><a href="/adm/events">Eventos</a></li>
         <!-- <li><a href="\">Configurações</a></li> -->
         <li><a href="\">Sair</a></li>
     </ul>
