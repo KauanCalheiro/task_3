@@ -89,12 +89,15 @@ services:
     expose:
       - 80
 
-  php-web:
-    container_name: php-web
+  php-sync:
+    container_name: php-sync
     restart: always
     build:
-      context: ./application
+      context: ./sync
       dockerfile: Dockerfile.dev
+    depends_on:
+      - postgres
+      - php-log
     environment:
       DB_CONNECTION: ${DB_CONNECTION_LARAVEL}
       DB_HOST: ${DB_HOST}
@@ -104,13 +107,34 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       TRUST_KEY: ${TRUST_KEY}
     volumes:
-      - ./user:/var/www/html
+      - ./sync:/var/www/html
     networks:
       - task-3-network
     expose:
       - 80
-    ports:
-      - "8080:80"
+
+  # php-web:
+  #   container_name: php-web
+  #   restart: always
+  #   build:
+  #     context: ./application
+  #     dockerfile: Dockerfile.dev
+  #   environment:
+  #     DB_CONNECTION: ${DB_CONNECTION_LARAVEL}
+  #     DB_HOST: ${DB_HOST}
+  #     DB_PORT: ${DB_PORT}
+  #     DB_DATABASE: ${DB_DATABASE}
+  #     DB_USERNAME: ${DB_USERNAME}
+  #     DB_PASSWORD: ${DB_PASSWORD}
+  #     TRUST_KEY: ${TRUST_KEY}
+  #   volumes:
+  #     - ./user:/var/www/html
+  #   networks:
+  #     - task-3-network
+  #   expose:
+  #     - 80
+  #   ports:
+  #     - "8080:80"
 
   php-certificate:
     container_name: php-certificate

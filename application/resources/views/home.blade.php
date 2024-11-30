@@ -28,9 +28,16 @@
                         </button>
                     </form>
                     @else
-                        <button style="background-color: red; height: 30px; border: none; padding: 4px; width: 80%; color: #fff; font-size: 1rem; font-weight: bold; border-radius: 4px;">
+                        <button style="background-color: rgb(99, 227, 24); height: 30px; border: none; padding: 4px; width: 80%; color: #fff; font-size: 1rem; font-weight: bold; border-radius: 4px;">
                             Inscrito
                         </button>
+                        <form action="{{ route('inscription.delete', [$event->id , $event->ref_inscription]) }}" method="POST" style="width: 100%; text-align:center;">
+                            @csrf
+                            @method('POST')
+                            <button type="submit" style="background-color: red; height: 30px; border: none; padding: 4px; width: 80%; color: #fff; font-size: 1rem; font-weight: bold; border-radius: 4px;">
+                                Cancelar a inscrição
+                            </button>
+                        </form>
                     @endif
                 </div>
             </div>

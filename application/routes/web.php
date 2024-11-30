@@ -14,14 +14,13 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/', HomeController::class);
     Route::resource('/minhas-inscricoes', RegistrationsController::class);
 
-
     Route::post('/presences/{inscription}', [PresenceController::class, 'store'])->name('presences.store');
     Route::post('/inscription/{event}', [InscriptionController::class, 'store'])->name('inscription.store');
+    Route::post('/inscription/delete/{eventId}/{refInscription}', [InscriptionController::class, 'destroy'])->name('inscription.delete');
 
     Route::resource('adm/events', EventController::class);
     Route::resource('adm/users', UserController::class);
     Route::resource('/adm', AdmController::class);
-    Route::post('/certificationmail', [MailController::class, 'store'])->name('mail.store');
 });
 
 Auth::routes();

@@ -13,12 +13,32 @@ class CertificationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $name;
+    public $eventName;
+    public $eventDate;
+    public $eventLocation;
+    public $formatacao;
+    public $subject;
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(public array $data)
     {
-        //
+        $this->eventName = $data['eventName'];
+        $this->eventDate = $data['eventDate'];
+        $this->eventLocation = $data['eventLocation'];
+        $this->name = $data['name'];
+
+        if($data['type'] == 1)
+        {
+            $this->formatacao = 'mails.confirmation';
+            $this->subject = 'Confirmação de Inscrição';
+        }
+        else if($data['type'] == 2)
+        {
+            $this->formatacao = 'mails.cancelation';
+            $this->subject = 'Cancelamento de Inscrição';
+        }
     }
 
     /**
@@ -27,7 +47,7 @@ class CertificationMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Certification Mail',
+            subject: $this->subject,
         );
     }
 
@@ -36,9 +56,20 @@ class CertificationMail extends Mailable
      */
     public function content(): Content
     {
-        return new Content(
-            view: 'mails.certification',
-        );
+        return new Content();
+    }
+
+    public function build()
+    {
+        return $this->from('univent@admin.com', 'Univent')
+        ->subject($this->subject)
+        ->view($this->formatacao)
+        ->with([
+            'name' => $this->name,
+            'eventName' => $this->eventName,
+            'eventDate' => $this->eventDate,
+            'eventLocation' => $this->eventLocation,
+        ]);
     }
 
     /**

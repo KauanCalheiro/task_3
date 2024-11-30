@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Event;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\CertificationMail;
 
 
 class HomeController extends Controller
@@ -46,10 +47,12 @@ class HomeController extends Controller
             $fl_inscrito = false;
             foreach ($inscricoes as $inscricao) {
                 if ($inscricao['ref_event'] == $event['id']) {
+                    $inscricao = $inscricao['id'];
                     $fl_inscrito = true;
                     break;
                 }
             }
+            $eventos[$key]['ref_inscription'] = $inscricao ? $inscricao : null;
             $eventos[$key]['fl_inscrito'] = $fl_inscrito;
         }
 
