@@ -1,0 +1,2808 @@
+{
+	"info": {
+		"_postman_id": "3f4d7d93-efc0-45df-97f8-769c695587e7",
+		"name": "Task_3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37053016",
+		"_collection_link": "https://univates-9038.postman.co/workspace/Task-3~3575858e-4c60-4845-9635-bfd78b424cb2/collection/37053016-3f4d7d93-efc0-45df-97f8-769c695587e7?action=share&source=collection_link&creator=37053016"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Check Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/{{AUTH_ROUTE}}/status",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{AUTH_ROUTE}}",
+								"status"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/{{AUTH_ROUTE}}/status",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{AUTH_ROUTE}}",
+										"status"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Nov 2024 14:07:37 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, must-revalidate"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "-1"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"API of Auths is working\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ref_user",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/{{AUTH_ROUTE}}/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{AUTH_ROUTE}}",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "ref_user",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/{{AUTH_ROUTE}}/login",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{AUTH_ROUTE}}",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 12:32:30 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, must-revalidate"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "-1"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Login realizado com sucesso\",\n    \"payload\": [],\n    \"count\": 0\n}"
+						},
+						{
+							"name": "Error(Already Logged)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "ref_user",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/{{AUTH_ROUTE}}/login",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{AUTH_ROUTE}}",
+										"login"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 12:32:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, must-revalidate"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "-1"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": {\n        \"ref_user\": [\n            \"O valor informado para o campo ref user já está em uso.\"\n        ]\n    },\n    \"payload\": null,\n    \"count\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ref_user",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/{{AUTH_ROUTE}}/logout",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{AUTH_ROUTE}}",
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "ref_user",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/{{AUTH_ROUTE}}/logout",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{AUTH_ROUTE}}",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 12:32:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, must-revalidate"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "-1"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Logout realizado com sucesso\",\n    \"payload\": [],\n    \"count\": 0\n}"
+						},
+						{
+							"name": "Error(Not Logged)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "ref_user",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/{{AUTH_ROUTE}}/logout",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{AUTH_ROUTE}}",
+										"logout"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 12:32:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, must-revalidate"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "-1"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": {\n        \"ref_user\": [\n            \"O valor selecionado para o campo ref user é inválido.\"\n        ]\n    },\n    \"payload\": null,\n    \"count\": 0\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Check Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/{{USER_ROUTE}}/status",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{USER_ROUTE}}",
+								"status"
+							]
+						},
+						"description": "This endpoint retrieves a API status"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/{{USER_ROUTE}}/status",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{USER_ROUTE}}",
+										"status"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Nov 2024 14:36:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, must-revalidate"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "-1"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"API of Users is working\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/{{USER_ROUTE}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{USER_ROUTE}}"
+							]
+						},
+						"description": "This is a GET request to retrieve all users"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/{{USER_ROUTE}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{USER_ROUTE}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 12:41:12 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, must-revalidate"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "-1"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Request successfully\",\n    \"payload\": [\n        {\n            \"id\": 1,\n            \"name\": \"Admin\",\n            \"email\": \"admin@admin.com\",\n            \"dt_birth\": \"2000-01-01\",\n            \"cpf\": null,\n            \"rg\": null\n        }\n    ],\n    \"count\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Get By ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/{{USER_ROUTE}}/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{USER_ROUTE}}",
+								"1"
+							]
+						},
+						"description": "This is a GET request to retrieve the user based on the provided ID."
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/{{USER_ROUTE}}/1",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{USER_ROUTE}}",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 12:41:23 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, must-revalidate"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "-1"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Request successfully\",\n    \"payload\": {\n        \"id\": 1,\n        \"name\": \"Admin\",\n        \"email\": \"admin@admin.com\",\n        \"dt_birth\": \"2000-01-01\",\n        \"cpf\": null,\n        \"rg\": null\n    },\n    \"count\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Kauan",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "kauan@gmail1.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "batatinha123",
+									"type": "text"
+								},
+								{
+									"key": "dt_birth",
+									"value": "2004-05-03",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/{{USER_ROUTE}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{USER_ROUTE}}"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Kauan",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "kauan@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "batatinha123",
+											"type": "text"
+										},
+										{
+											"key": "dt_birth",
+											"value": "2004-05-03",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/{{USER_ROUTE}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{USER_ROUTE}}"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 12:42:34 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, must-revalidate"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "-1"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Request successfully\",\n    \"payload\": {\n        \"name\": \"Kauan\",\n        \"email\": \"kauan@gmail.com\",\n        \"dt_birth\": \"2004-05-03\",\n        \"id\": 2\n    },\n    \"count\": 1\n}"
+						},
+						{
+							"name": "Error(Duplicated Email)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Kauan",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "kauan@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "batatinha123",
+											"type": "text"
+										},
+										{
+											"key": "dt_birth",
+											"value": "2004-05-03",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/{{USER_ROUTE}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{USER_ROUTE}}"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 12:44:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, must-revalidate"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "-1"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": {\n        \"email\": [\n            \"O valor informado para o campo e-mail já está em uso.\"\n        ]\n    },\n    \"payload\": null,\n    \"count\": 0\n}"
+						},
+						{
+							"name": "Error(Missing Fields Required)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Kauan",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "kauan@gmail.com",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "batatinha123",
+											"type": "text"
+										},
+										{
+											"key": "dt_birth",
+											"value": "2004-05-03",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/{{USER_ROUTE}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{USER_ROUTE}}"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 12:44:31 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, must-revalidate"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "-1"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": {\n        \"name\": [\n            \"O campo nome é obrigatório.\"\n        ],\n        \"email\": [\n            \"O campo e-mail é obrigatório.\"\n        ]\n    },\n    \"payload\": null,\n    \"count\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Kauan Morinel Calheiro\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/{{USER_ROUTE}}/2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{USER_ROUTE}}",
+								"2"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Kauan Morinel Calheiro\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/{{USER_ROUTE}}/2",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{USER_ROUTE}}",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 12:49:01 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, must-revalidate"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "-1"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Request successfully\",\n    \"payload\": {\n        \"id\": 2,\n        \"name\": \"Kauan Morinel Calheiro\",\n        \"email\": \"kauan@gmail.com\",\n        \"dt_birth\": \"2004-05-03\",\n        \"cpf\": null,\n        \"rg\": null\n    },\n    \"count\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/{{USER_ROUTE}}/2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{USER_ROUTE}}",
+								"2"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/{{USER_ROUTE}}/2",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{USER_ROUTE}}",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 12:50:33 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, must-revalidate"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "-1"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Request successfully\",\n    \"payload\": {\n        \"id\": 2,\n        \"name\": \"Kauan Morinel Calheiro\",\n        \"email\": \"kauan@gmail.com\",\n        \"dt_birth\": \"2004-05-03\",\n        \"cpf\": null,\n        \"rg\": null\n    },\n    \"count\": 1\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "Check Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/{{EVENT_ROUTE}}/status",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{EVENT_ROUTE}}",
+								"status"
+							]
+						},
+						"description": "This endpoint retrieves a API status"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/{{EVENT_ROUTE}}/status",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{EVENT_ROUTE}}",
+										"status"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 17:57:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "37"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"25-VfO56/LSuKO27jbJCUBCBEo8soY\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"API of Event is working\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/{{EVENT_ROUTE}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{EVENT_ROUTE}}"
+							]
+						},
+						"description": "This is a GET request to retrieve all users"
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/{{EVENT_ROUTE}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{EVENT_ROUTE}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 18:06:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "281"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"119-XudvSRHT10HyPxA8OsTEZuu/ITs\""
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Evento de teste\",\n        \"description\": \"Evento de teste\",\n        \"dt_init\": \"2024-11-05T00:00:00.000Z\",\n        \"dt_end\": \"2024-11-05T00:00:00.000Z\",\n        \"location\": \"Local de teste\",\n        \"capacity\": 100,\n        \"created_at\": \"2024-11-05T18:05:32.704Z\",\n        \"updated_at\": \"2024-11-05T18:05:32.704Z\",\n        \"deleted_at\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get By ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/{{EVENT_ROUTE}}/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{EVENT_ROUTE}}",
+								"1"
+							]
+						},
+						"description": "This is a GET request to retrieve the user based on the provided ID."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/{{EVENT_ROUTE}}/1",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{EVENT_ROUTE}}",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 18:07:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "279"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"117-aJJyM3gvHkZLdEM+z44T5iqBuKs\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Evento de teste\",\n    \"description\": \"Evento de teste\",\n    \"dt_init\": \"2024-11-05T00:00:00.000Z\",\n    \"dt_end\": \"2024-11-05T00:00:00.000Z\",\n    \"location\": \"Local de teste\",\n    \"capacity\": 100,\n    \"created_at\": \"2024-11-05T18:05:32.704Z\",\n    \"updated_at\": \"2024-11-05T18:05:32.704Z\",\n    \"deleted_at\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Evento de teste\",\n  \"description\": \"Evento de teste\",\n  \"dt_init\": \"2024-11-05\",\n  \"dt_end\": \"2024-11-05\",\n  \"location\": \"Local de teste\",\n  \"capacity\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/{{EVENT_ROUTE}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{EVENT_ROUTE}}"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Evento de teste\",\n  \"description\": \"Evento de teste\",\n  \"dt_init\": \"2024-11-05\",\n  \"dt_end\": \"2024-11-05\",\n  \"location\": \"Local de teste\",\n  \"capacity\": 100\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/{{EVENT_ROUTE}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{EVENT_ROUTE}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 18:05:32 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "279"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"117-8ngcdu42qqUKhMplywksDycHB4o\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Evento de teste\",\n    \"description\": \"Evento de teste\",\n    \"dt_init\": \"2024-11-05T00:00:00.000Z\",\n    \"dt_end\": \"2024-11-05T00:00:00.000Z\",\n    \"location\": \"Local de teste\",\n    \"capacity\": 100,\n    \"updated_at\": \"2024-11-05T18:05:32.704Z\",\n    \"created_at\": \"2024-11-05T18:05:32.704Z\",\n    \"deleted_at\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Evento Maneiro\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/{{EVENT_ROUTE}}/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{EVENT_ROUTE}}",
+								"1"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Evento Maneiro\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/{{EVENT_ROUTE}}/1",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{EVENT_ROUTE}}",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 18:07:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "278"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"116-LVCKI07/XT4zlbrETwNa1ouPYGw\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Evento Maneiro\",\n    \"description\": \"Evento de teste\",\n    \"dt_init\": \"2024-11-05T00:00:00.000Z\",\n    \"dt_end\": \"2024-11-05T00:00:00.000Z\",\n    \"location\": \"Local de teste\",\n    \"capacity\": 100,\n    \"created_at\": \"2024-11-05T18:05:32.704Z\",\n    \"updated_at\": \"2024-11-05T18:07:55.936Z\",\n    \"deleted_at\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/{{EVENT_ROUTE}}/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{EVENT_ROUTE}}",
+								"1"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/{{EVENT_ROUTE}}/1",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{EVENT_ROUTE}}",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Nov 2024 18:08:36 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "300"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12c-676abMtQjStfxG8zZ1JCmCuB3xY\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Evento Maneiro\",\n    \"description\": \"Evento de teste\",\n    \"dt_init\": \"2024-11-05T00:00:00.000Z\",\n    \"dt_end\": \"2024-11-05T00:00:00.000Z\",\n    \"location\": \"Local de teste\",\n    \"capacity\": 100,\n    \"created_at\": \"2024-11-05T18:05:32.704Z\",\n    \"updated_at\": \"2024-11-05T18:08:36.234Z\",\n    \"deleted_at\": \"2024-11-05T18:08:36.234Z\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Inscription",
+			"item": [
+				{
+					"name": "Check Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}/status",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{INSCRIPTION_ROUTE}}",
+								"status"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}/status",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{INSCRIPTION_ROUTE}}",
+										"status"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 07 Nov 2024 01:29:28 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-JwZmgsURY46mkk/CpAkmNhSTSyo\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"API of Inscription is working\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ref_user\": 1,\n    \"ref_event\": 1,\n    \"dt_inscription\": \"2024-11-06\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{INSCRIPTION_ROUTE}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ref_user\": 1,\n    \"ref_event\": 1,\n    \"dt_inscription\": \"2024-11-06\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{INSCRIPTION_ROUTE}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Nov 2024 01:47:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "177"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b1-cPt8c/91i6X4AY/Utsh3B3xcES8\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 3,\n    \"ref_user\": 1,\n    \"ref_event\": 1,\n    \"dt_inscription\": \"2024-11-06T00:00:00.000Z\",\n    \"updated_at\": \"2024-11-08T01:47:26.559Z\",\n    \"created_at\": \"2024-11-08T01:47:26.559Z\",\n    \"deleted_at\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ref_user\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{INSCRIPTION_ROUTE}}",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ref_user\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}/1",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{INSCRIPTION_ROUTE}}",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 07 Nov 2024 01:49:16 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "177"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b1-iEziwmMe71hByn6yGcAACxFtZaU\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"ref_user\": 2,\n    \"ref_event\": 1,\n    \"dt_inscription\": \"2024-11-06T00:00:00.000Z\",\n    \"created_at\": \"2024-11-07T01:48:20.312Z\",\n    \"updated_at\": \"2024-11-07T01:49:16.842Z\",\n    \"deleted_at\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{INSCRIPTION_ROUTE}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{INSCRIPTION_ROUTE}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 07 Nov 2024 01:49:53 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "179"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b3-oqhokny5UZZbMc3ZgYeu39eNzEc\""
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"ref_user\": 2,\n        \"ref_event\": 1,\n        \"dt_inscription\": \"2024-11-06T00:00:00.000Z\",\n        \"created_at\": \"2024-11-07T01:48:20.312Z\",\n        \"updated_at\": \"2024-11-07T01:49:16.842Z\",\n        \"deleted_at\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{INSCRIPTION_ROUTE}}",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}/1",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{INSCRIPTION_ROUTE}}",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 07 Nov 2024 01:50:33 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "177"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b1-iEziwmMe71hByn6yGcAACxFtZaU\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"ref_user\": 2,\n    \"ref_event\": 1,\n    \"dt_inscription\": \"2024-11-06T00:00:00.000Z\",\n    \"created_at\": \"2024-11-07T01:48:20.312Z\",\n    \"updated_at\": \"2024-11-07T01:49:16.842Z\",\n    \"deleted_at\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Attendance",
+			"item": [
+				{
+					"name": "Check Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}/status",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{ATTENDANCE_ROUTE}}",
+								"status"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}/status",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{ATTENDANCE_ROUTE}}",
+										"status"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Nov 2024 01:13:54 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-Zlh+jm6JHTGXz2iB/fM/GCsdDXA\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"API of Attendeces is working\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ref_inscription\":2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{ATTENDANCE_ROUTE}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ref_inscription\":2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{ATTENDANCE_ROUTE}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Nov 2024 01:31:44 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "167"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a7-UQ4fBMph+ADov9JYy2crCMsUiAU\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"dt_presence\": \"2024-11-08T01:31:44.972Z\",\n    \"id\": 2,\n    \"ref_inscription\": 2,\n    \"updated_at\": \"2024-11-08T01:31:44.972Z\",\n    \"created_at\": \"2024-11-08T01:31:44.972Z\",\n    \"deleted_at\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ref_inscription\":3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{ATTENDANCE_ROUTE}}",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ref_inscription\":3\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}/1",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{ATTENDANCE_ROUTE}}",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Nov 2024 01:32:47 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "167"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a7-WgO00J7KaWzJDmgrfk4st+g9jNs\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"ref_inscription\": 3,\n    \"dt_presence\": \"2024-11-08T01:30:24.602Z\",\n    \"created_at\": \"2024-11-08T01:30:24.602Z\",\n    \"updated_at\": \"2024-11-08T01:32:47.555Z\",\n    \"deleted_at\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{ATTENDANCE_ROUTE}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{ATTENDANCE_ROUTE}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Nov 2024 01:30:53 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "147"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"93-uGQJ6Alj9T/S3cx3Ckds0bllC84\""
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"ref_inscription\": 1,\n        \"dt_presence\": \"2024-11-08T01:30:24.602Z\",\n        \"created_at\": \"2024-11-08T01:30:24.602Z\",\n        \"updated_at\": null,\n        \"deleted_at\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{ATTENDANCE_ROUTE}}",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}/1",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{ATTENDANCE_ROUTE}}",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Nov 2024 01:30:46 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "145"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"91-dYEcOgOxYkifmLmoT1G3rx+kpxU\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"ref_inscription\": 1,\n    \"dt_presence\": \"2024-11-08T01:30:24.602Z\",\n    \"created_at\": \"2024-11-08T01:30:24.602Z\",\n    \"updated_at\": null,\n    \"deleted_at\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Certificate",
+			"item": [
+				{
+					"name": "Generate Certificate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ref_inscription",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/{{CERTIFICATE_ROUTE}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{CERTIFICATE_ROUTE}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Inscription",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ref_inscription",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/{{CERTIFICATE_ROUTE}}/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{CERTIFICATE_ROUTE}}",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Validate Code",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ref_inscription",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/{{CERTIFICATE_ROUTE}}/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{CERTIFICATE_ROUTE}}",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "a2FrYXVfYm9tYmFkYW8=",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
