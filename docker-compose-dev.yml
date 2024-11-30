@@ -89,6 +89,30 @@ services:
     expose:
       - 80
 
+  php-certificate:
+    container_name: php-certificate
+    restart: always
+    build:
+      context: ./certificate
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - postgres
+      - php-log
+    environment:
+      DB_CONNECTION: ${DB_CONNECTION_LARAVEL}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      TRUST_KEY: ${TRUST_KEY}
+    volumes:
+      - ./certificate:/var/www/html
+    networks:
+      - task-3-network
+    expose:
+      - 80
+
   php-log:
     container_name: php-log
     restart: always
