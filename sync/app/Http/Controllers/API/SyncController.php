@@ -84,7 +84,6 @@ class SyncController extends Controller
             {
                 foreach($inscricao['participantes'] as $participante)
                 {
-                    //Se entrar vai inscrever no evento
                     if($user['id'] == $participante['id'])
                     {
                         $have_inscription = Inscriptions::where('ref_user', $user['new_id'])->where('ref_event', $inscricao['id'])->first();

@@ -10,8 +10,8 @@ Route::get('/status', function () {
 
 Route::prefix('/')->group(function () {
         Route::middleware(TrustKey::class)->group(function () {
-            Route::get   ('sync',     [SyncController::class, 'index'  ]);
-            Route::post  ('sync',     [SyncController::class, 'store'  ]);
+            Route::get   ('',     [SyncController::class, 'index'  ]);
+            Route::post  ('',     [SyncController::class, 'store'  ]);
         });
     
 });
