@@ -4,8 +4,8 @@
 
 <div class="home-container">
     <div class="welcome-section text-center">
-        <h1>Eventos</h1>
-        <p class="lead">Aqui você pode se inscrever facilmente em eventos.</p>
+        <h1>Minhas Inscrições</h1>
+        <p class="lead">Abaixo segue suas inscrições!</p>
     </div>
 
     <div style="margin-left:20px">
@@ -20,17 +20,14 @@
                     <h1 style="font-size: 1.2rem;">{{ $event->name }}</h1>
                     <h2 style="font-size: .9rem; color: #aaaa;">{{ $event->description }}</h2>
                     <span>{{ $event->location}}</span>
-                    @if (!$event->fl_inscrito)
+
+                    @if ($event->fl_presenca)
                     <form action="{{ route('inscription.store', $event->id) }}" method="POST" style="width: 100%; text-align:center;">
                         @csrf
-                        <button type="submit" style="background-color: #2192FF; height: 30px; border: none; padding: 4px; width: 80%; color: #fff; font-size: 1rem; font-weight: bold; border-radius: 4px;">
-                            Fazer inscrição
+                        <button type="submit" style="background-color: #66CC66; height: 30px; border: none; padding: 4px; width: 80%; color: #fff; font-size: 1rem; font-weight: bold; border-radius: 4px;">
+                            Gerar certificado
                         </button>
                     </form>
-                    @else
-                        <button style="background-color: red; height: 30px; border: none; padding: 4px; width: 80%; color: #fff; font-size: 1rem; font-weight: bold; border-radius: 4px;">
-                            Inscrito
-                        </button>
                     @endif
                 </div>
             </div>

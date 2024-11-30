@@ -23,4 +23,8 @@ inscriptionRouter.delete('/:id', (req, res) => {
     InscriptionController.destroy(req, res)
 });
 
+inscriptionRouter.get('/inscriptions/:ref_user', (req, res) => {
+    InscriptionController.getInscriptionsForUser(req, res)
+});
+
 export default inscriptionRouter;

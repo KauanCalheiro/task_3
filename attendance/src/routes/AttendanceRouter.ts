@@ -7,6 +7,10 @@ attendanceRouter.get('/', (req, res) => {
     AttendanceController.show(req, res)
 });
 
+attendanceRouter.get('/havepresence/:id', (req, res) => {
+    AttendanceController.havePresenceForInscription(req, res)
+});
+
 attendanceRouter.get('/:id', (req, res) => {
     AttendanceController.index(req, res)
 });
