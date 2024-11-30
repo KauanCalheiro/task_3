@@ -19,8 +19,8 @@ class InscriptionController extends Controller
             $user = Auth::user();
 
             $response_inscription = Http::withHeaders([
-                'Authorization' => 'Bearer a2FrYXVfYm9tYmFkYW8='
-            ])->post('http://localhost:80/api/inscription', [
+                'Authorization' => "Bearer {$_ENV['TRUST_KEY']}"
+            ])->post("{$_ENV['URL_PROD']}/api/inscription", [
                 'ref_user' => $user->id,
                 'ref_event' => $id, 
                 'dt_inscription' => Carbon::now() ,

@@ -8,6 +8,7 @@ use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\RegistrationsController;
 use App\Http\Controllers\AdmController;
 use App\Http\Controllers\PresenceController;
+use App\Http\Controllers\MailController;
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('/', HomeController::class);
@@ -20,8 +21,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('adm/events', EventController::class);
     Route::resource('adm/users', UserController::class);
     Route::resource('/adm', AdmController::class);
-    //Route::resource('adm/presences', PresenceController::class);
-
+    Route::post('/certificationmail', [MailController::class, 'store'])->name('mail.store');
 });
 
 Auth::routes();

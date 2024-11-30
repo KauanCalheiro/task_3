@@ -15,20 +15,20 @@ class RegistrationsController extends Controller
         $userId = Auth::id();
 
         $response_inscricoes = Http::withHeaders([
-            'Authorization' => 'Bearer a2FrYXVfYm9tYmFkYW8='
-        ])->get('http://localhost:80/api/inscription/inscriptions/'.$userId);
+            'Authorization' => "Bearer {$_ENV['TRUST_KEY']}"
+        ])->get("{$_ENV['URL_PROD']}/api/inscription/inscriptions/".$userId);
 
         $inscricoes = $response_inscricoes->json();
 
         $response_event = Http::withHeaders([
-            'Authorization' => 'Bearer a2FrYXVfYm9tYmFkYW8='
-        ])->get('http://localhost:80/api/event');
+            'Authorization' => "Bearer {$_ENV['TRUST_KEY']}"
+        ])->get("{$_ENV['URL_PROD']}/api/event");
 
         $eventos = $response_event->json();
 
         $response_attendance = Http::withHeaders([
-            'Authorization' => 'Bearer a2FrYXVfYm9tYmFkYW8='
-        ])->get('http://localhost:80/api/attendance');
+            'Authorization' => "Bearer {$_ENV['TRUST_KEY']}"
+        ])->get("{$_ENV['URL_PROD']}/api/attendance");
 
         $presencas = $response_attendance->json();
 

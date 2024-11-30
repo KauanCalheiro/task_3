@@ -16,8 +16,8 @@ class PresenceController extends Controller
             $data = $request->all();
             
             $response_inscription = Http::withHeaders([
-                'Authorization' => 'Bearer a2FrYXVfYm9tYmFkYW8='
-            ])->post('http://localhost:80/api/attendance', [
+                'Authorization' => "Bearer {$_ENV['TRUST_KEY']}"
+            ])->post("{$_ENV['URL_PROD']}/api/attendance", [
                 'ref_inscription' => $id
             ]);
             

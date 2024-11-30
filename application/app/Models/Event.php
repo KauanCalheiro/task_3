@@ -29,6 +29,7 @@ class Event extends Model
     const CREATE_RULES = [
         'name'  => ['required'],
         'description'  => ['required'],
+        'description'  => ['required'],
         'dt_init' => ['required'],
         'dt_end' => ['required'],
         'capacity' => ['required']
