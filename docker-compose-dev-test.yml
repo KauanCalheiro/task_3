@@ -1,0 +1,29 @@
+services:
+  php-web:
+    container_name: php-web
+    restart: always
+    build:
+      context: ./application
+      dockerfile: Dockerfile.dev
+    environment:
+      DB_CONNECTION: ${DB_CONNECTION_LARAVEL}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      TRUST_KEY: ${TRUST_KEY}
+    volumes:
+      - ./application:/var/www/html
+    networks:
+      - task-3-network
+    expose:
+      - 8000
+      - 8001
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+
+networks:
+  task-3-network:
+    driver: bridge
