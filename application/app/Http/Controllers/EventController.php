@@ -15,8 +15,8 @@ class EventController extends Controller
        // $events = Event::all();
         
         $response_event = Http::withHeaders([
-            'Authorization' => 'Bearer a2FrYXVfYm9tYmFkYW8='
-        ])->get('http://localhost:80/api/event');
+            'Authorization' => "Bearer {$_ENV['TRUST_KEY']}"
+        ])->get("{$_ENV['URL_PROD']}/api/event");
 
         $eventos = $response_event->json();
 
@@ -39,8 +39,8 @@ class EventController extends Controller
             $data = $request->all();
 
             $response_events = Http::withHeaders([
-                'Authorization' => 'Bearer a2FrYXVfYm9tYmFkYW8='
-            ])->post('http://localhost:80/api/event/', [
+                'Authorization' => "Bearer {$_ENV['TRUST_KEY']}"
+            ])->post("{$_ENV['URL_PROD']}/api/event/", [
                 'name' => $data['name'], 
                 'description' => $data['description'],
                 'dt_init' => $data['dt_init'],
@@ -48,8 +48,6 @@ class EventController extends Controller
                 'location' => $data['location'],
                 'capacity' => $data['capacity']
             ]);
-
-            //$event = Event::create( $validatedData );
 
             if ($response_events->successful()) {
                 return redirect()->route('events.index')->with('success', 'Evento criado com sucesso!');

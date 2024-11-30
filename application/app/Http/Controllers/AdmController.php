@@ -13,14 +13,14 @@ class AdmController extends Controller
     public function index()
     {
         $response_inscricoes = Http::withHeaders([
-            'Authorization' => 'Bearer a2FrYXVfYm9tYmFkYW8='
-        ])->get('http://localhost:80/api/inscription');
+            'Authorization' => "Bearer {$_ENV['TRUST_KEY']}"
+        ])->get("{$_ENV['URL_PROD']}/api/inscription");
 
         $inscricoes = $response_inscricoes->json();
 
         $response_presencas = Http::withHeaders([
-            'Authorization' => 'Bearer a2FrYXVfYm9tYmFkYW8='
-        ])->get('http://localhost:80/api/attendance');
+            'Authorization' => "Bearer {$_ENV['TRUST_KEY']}"
+        ])->get("{$_ENV['URL_PROD']}/api/attendance");
 
         $presencas = $response_presencas->json();
 
@@ -43,7 +43,6 @@ class AdmController extends Controller
                 }
             }
         }
-
 
         $inscriptions = collect($inscriptions)->map(function ($inscription) {
             return (object) $inscription;
