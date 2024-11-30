@@ -22,33 +22,32 @@ class EventController {
         }
     }
 
-    static async getEventsForPessoa(req: Request, res: Response)
-    {
-        const userId = req.user.id;
+    // static async getEventsForPessoa(req: Request, res: Response)
+    // {
+    //     try
+    //     {
+    //         const userId = req.params.id;
 
-        const eventsInscritos = await Inscription.findAll({
-            where: { ref_user: userId },
-            attributes: ['ref_event'], 
-        });
+    //         const eventsInscritos = await Inscription.findAll({
+    //             where: { integer ref_user: userId },
+    //             attributes: ['ref_event'], 
+    //         });
 
-      // Extrair os ids dos eventos nos quais o usuário está inscrito
-      const eventIds = eventsInscritos.map((inscription: any) => inscription.ref_event);
+    //         const eventIds = eventsInscritos.map((inscription: any) => inscription.ref_event);
 
-      // Obter todos os eventos
-      const events = await Event.findAll();
+    //         const events = await Event.findAll();
 
-      // Adicionar o campo fl_inscrito a cada evento
-      const eventsWithInscriptionStatus = events.map((event: any) => {
-        event.fl_inscrito = eventIds.includes(event.id);
-        return event;
-      });
+    //         const eventsWithInscriptionStatus = events.map((event: any) => {
+    //             event.fl_inscrito = eventIds.includes(event.id);
+    //             return event;
+    //         });
 
-      return res.json(eventsWithInscriptionStatus);  // Retornar os eventos com fl_inscrito
-    } catch (error: any) {
-      return res.status(500).json({ error: error.message });  // Retornar erro se ocorrer algum problema
-    }
+    //         return res.json(eventsWithInscriptionStatus);
+    //     } catch (error: any) {
+    //     return res.status(500).json({ error: error.message }); 
+    //     }
 
-    } 
+    // } 
 
     static async store(req: Request, res: Response) {
         try {
