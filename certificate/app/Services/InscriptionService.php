@@ -2,18 +2,32 @@
 
 namespace App\Services;
 
+use Exception;
+use Illuminate\Support\Facades\Http;
 use App\Interfaces\Inscription;
 
 class InscriptionService {
     public static function index($ref_inscription) {
-        $refUser = 1;
-        $refEvent = 1;
+        $response = Http::withHeader('Authorization', "Bearer {$_ENV['TRUST_KEY']}")
+        ->get("http://node-inscription:3000/api/{$ref_inscription}");
 
-        return new Inscription(
-            $refUser,
-            $refEvent,
-            UserService::index($refUser),
-            EventService::index($refEvent)
+        if (!$response->successful()) {
+            throw new Exception('Failed to get inscription');
+        }
+
+        if(empty($response->json())) {
+            throw new Exception("Inscription not found for id: {$ref_inscription}");
+        }
+
+        $t = new Inscription(
+            $response->json()['ref_user'],
+            $response->json()['ref_event'],
+            UserService::index($response->json()['ref_user']),
+            EventService::index($response->json()['ref_event'])
         );
+
+        var_dump($t);
+
+        return $t;
     }
 }
