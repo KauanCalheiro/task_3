@@ -58,26 +58,26 @@ services:
       - 80
 
   php-sync:
-      container_name: php-sync
-      restart: always
-      build:
-        context: ./sync
-        dockerfile: Dockerfile.prod
-      depends_on:
-        - postgres
-        - php-log
-      environment:
-        DB_CONNECTION: ${DB_CONNECTION_LARAVEL}
-        DB_HOST: ${DB_HOST}
-        DB_PORT: ${DB_PORT}
-        DB_DATABASE: ${DB_DATABASE}
-        DB_USERNAME: ${DB_USERNAME}
-        DB_PASSWORD: ${DB_PASSWORD}
-        TRUST_KEY: ${TRUST_KEY}
-      networks:
-        - task-3-network
-      expose:
-        - 80
+    container_name: php-sync
+    restart: always
+    build:
+      context: ./sync
+      dockerfile: Dockerfile.prod
+    depends_on:
+      - postgres
+      - php-log
+    environment:
+      DB_CONNECTION: ${DB_CONNECTION_LARAVEL}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      TRUST_KEY: ${TRUST_KEY}
+    networks:
+      - task-3-network
+    expose:
+      - 80
 
   php-user:
     container_name: php-user
