@@ -38,7 +38,7 @@ class InscriptionController extends Controller
         
                 $evento = $response_event->json();
         
-                Mail::to('joao.vieceli@universo.univates.br')->send(new CertificationMail([
+                $return_email = Mail::to('joao.vieceli@universo.univates.br')->send(new CertificationMail([
                     'name' => Auth::user()->name,
                     'eventName' => $evento['name'],
                     'eventDate' => $evento['dt_init'] . '  -  ' . $evento['dt_end'],

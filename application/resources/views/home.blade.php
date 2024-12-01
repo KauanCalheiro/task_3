@@ -31,7 +31,7 @@
                         <button style="background-color: rgb(99, 227, 24); height: 30px; border: none; padding: 4px; width: 80%; color: #fff; font-size: 1rem; font-weight: bold; border-radius: 4px;">
                             Inscrito
                         </button>
-                        <form action="{{ route('inscription.delete', [$event->id , $event->ref_inscription]) }}" method="POST" style="width: 100%; text-align:center;">
+                        <form action="{{ route('inscription.delete', [$event->id , $event->ref_inscription]) }}" method="POST" style="width: 100%; text-align:center;" onsubmit="return confirmDeletion();">
                             @csrf
                             @method('POST')
                             <button type="submit" style="background-color: red; height: 30px; border: none; padding: 4px; width: 80%; color: #fff; font-size: 1rem; font-weight: bold; border-radius: 4px;">
@@ -50,6 +50,11 @@
         <p>&copy; {{ date('Y') }} Sistema de Inscrições. Todos os direitos reservados.</p>
     </div>
 </div>
+<script>
+    function confirmDeletion() {
+        return confirm("Tem certeza de que deseja cancelar a inscrição? Essa ação não pode ser desfeita.");
+    }
+</script>
 @endsection
 
 @push('styles')

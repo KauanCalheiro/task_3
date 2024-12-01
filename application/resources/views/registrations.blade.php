@@ -22,7 +22,7 @@
                     <span>{{ $event->location}}</span>
 
                     @if ($event->fl_presenca)
-                    <form action="{{ route('mail.store', $event->id) }}" method="POST" style="width: 100%; text-align:center;">
+                    <form action="{{ route('certificate.store', $event->id) }}" method="POST" style="width: 100%; text-align:center;">
                         @csrf
                         <button type="submit" style="background-color: #66CC66; height: 30px; border: none; padding: 4px; width: 80%; color: #fff; font-size: 1rem; font-weight: bold; border-radius: 4px;">
                             Gerar certificado

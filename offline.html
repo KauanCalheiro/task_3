@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de Inscrições - Eventos</title>
     <style>
-        /* Resetando alguns estilos padrões do navegador */
         * {
             margin: 0;
             padding: 0;
@@ -31,7 +30,6 @@
             margin-bottom: 10px;
         }
 
-        /* Container principal */
         div {
             margin-bottom: 20px;
             padding: 20px;
@@ -72,7 +70,6 @@
             background-color: #45a049;
         }
 
-        /* Estilos para a tabela */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -102,15 +99,12 @@
         }
     </style>
     <script>
-        // Função para carregar os eventos e participantes do localStorage
         function carregarDados() {
-            // Carregar eventos e participantes do localStorage
             let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
             let participantes = JSON.parse(localStorage.getItem('participantes')) || [];
 
-            // Preencher a lista de eventos
             const eventoSelect = document.getElementById('evento');
-            eventoSelect.innerHTML = '<option value="">Selecione um Evento</option>'; // Resetar eventos
+            eventoSelect.innerHTML = '<option value="">Selecione um Evento</option>';
             eventos.forEach(evento => {
                 const option = document.createElement('option');
                 option.value = evento.id;
@@ -118,9 +112,8 @@
                 eventoSelect.appendChild(option);
             });
 
-            // Preencher a lista de participantes existentes
             const participanteSelect = document.getElementById('participante');
-            participanteSelect.innerHTML = '<option value="">Selecione um Participante</option>'; // Resetar participantes
+            participanteSelect.innerHTML = '<option value="">Selecione um Participante</option>';
             participantes.forEach(participante => {
                 const option = document.createElement('option');
                 option.value = participante.id;
@@ -128,11 +121,9 @@
                 participanteSelect.appendChild(option);
             });
 
-            // Atualizar a tabela de inscritos
             atualizarTabelaInscritos(eventos, participantes);
         }
 
-        // Função para cadastrar um novo participante
         function cadastrarParticipante() {
             const nomeParticipante = document.getElementById('nome').value;
             const emailParticipante = document.getElementById('email').value;
@@ -144,25 +135,21 @@
 
             let participantes = JSON.parse(localStorage.getItem('participantes')) || [];
             
-            // Verifica se o participante já existe
             let participanteExistente = participantes.find(p => p.email === emailParticipante);
             if (participanteExistente) {
                 alert('Este participante já está cadastrado!');
                 return;
             }
 
-            // Cria um novo participante
             const participante = {
                 id: Date.now().toString(),
                 nome: nomeParticipante,
                 email: emailParticipante
             };
 
-            // Adiciona o participante ao localStorage
             participantes.push(participante);
             localStorage.setItem('participantes', JSON.stringify(participantes));
 
-            // Limpa o formulário e recarrega os dados
             document.getElementById('nome').value = '';
             document.getElementById('email').value = '';
 
@@ -170,7 +157,6 @@
             alert('Participante cadastrado com sucesso!');
         }
 
-        // Função para inscrever um participante
         function inscreverParticipante() {
             const eventoId = document.getElementById('evento').value;
             const participanteId = document.getElementById('participante').value;
@@ -183,7 +169,6 @@
             let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
             let participantes = JSON.parse(localStorage.getItem('participantes')) || [];
 
-            // Encontra o participante e o evento selecionados
             const participante = participantes.find(p => p.id === participanteId);
             const evento = eventos.find(e => e.id === eventoId);
 
@@ -197,40 +182,31 @@
                 return;
             }
 
-            // Se o evento ainda não existir no localStorage, cria um novo
             if (!evento.participantes) {
                 evento.participantes = [];
             }
 
-            // Verifica se o participante já foi inscrito no evento
             if (evento.participantes.find(p => p.id === participante.id)) {
                 alert('Este participante já está inscrito neste evento.');
                 return;
             }
 
-            // Adiciona o participante ao evento
             evento.participantes.push(participante);
             
-            // Salva as alterações no localStorage
             localStorage.setItem('eventos', JSON.stringify(eventos));
 
-            // Exibe mensagem de sucesso
             alert('Participante inscrito com sucesso!');
 
-            // Recarrega os dados
             carregarDados();
         }
 
-        // Função para registrar presença de um participante
         function registrarPresenca(eventoId, participanteId) {
             let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
 
-            // Encontra o evento e o participante
             const evento = eventos.find(e => e.id === eventoId);
             const participante = evento.participantes.find(p => p.id === participanteId);
 
             if (evento && participante) {
-                // Marca a presença do participante
                 if (!participante.presenca) {
                     participante.presenca = true;
                 } else {
@@ -238,21 +214,17 @@
                     return;
                 }
 
-                // Salva os dados atualizados no localStorage
                 localStorage.setItem('eventos', JSON.stringify(eventos));
 
-                // Atualiza a tabela
                 carregarDados();
                 alert('Presença registrada com sucesso!');
             }
         }
 
-        // Função para atualizar a tabela de inscritos
         function atualizarTabelaInscritos(eventos, participantes) {
             const tabelaInscritos = document.getElementById('tabelaInscritos');
-            tabelaInscritos.innerHTML = ''; // Limpar tabela
+            tabelaInscritos.innerHTML = ''; 
 
-            // Adicionar cabeçalho da tabela
             eventos.forEach(evento => {
                 if (evento.participantes) {
                     evento.participantes.forEach(participante => {
@@ -270,10 +242,26 @@
             });
         }
 
-        // Função para sincronizar com o portal
+        function buscarDadosApiSync()
+        {
+            localStorage.clear()
+
+            const response = fetch("http://localhost:80/api/sync", {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer a2FrYXVfYm9tYmFkYW8=',
+                    }
+                });
+
+            console.log(response);
+
+        }
+
+
         function sincronizarDados() {
             return true;
-            // Obter todos os dados armazenados no localStorage
+
             const dados = {
                 pessoas: JSON.parse(localStorage.getItem('people')) || [],
                 eventos: [
@@ -283,7 +271,6 @@
                 ],
             };
 
-            // Criando o objeto que será enviado
             const requestData = {
                 pessoas: dados.pessoas.map(pessoa => ({
                     nome: pessoa.name,
@@ -293,19 +280,17 @@
                         presente: evento.attended,
                     })),
                 })),
-                eventos: dados.eventos,  // Dados dos eventos (caso necessário)
+                eventos: dados.eventos,
             };
 
-            // Exemplo de exibição dos dados para garantir que estão corretos
             console.log('Enviando dados para o portal: ', requestData);
 
-            // Enviar os dados para a API
             fetch('https://seu-portal-de-eventos.com/api/sincronizar', {
-                method: 'POST', // Método HTTP
+                method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json', // Tipo de conteúdo que estamos enviando
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(requestData), // Dados convertidos para formato JSON
+                body: JSON.stringify(requestData),
             })
             .then(response => {
                 if (response.ok) {
@@ -320,11 +305,9 @@
             });
         }
 
-        // Função que inicializa a página com dados de exemplo
         function inicializarDados() {
             let eventos = JSON.parse(localStorage.getItem('eventos')) || [];
             if (eventos.length === 0) {
-                // Adiciona um evento de exemplo
                 eventos.push({
                     id: '1',
                     nome: 'Evento de Exemplo',
@@ -342,7 +325,6 @@
 <body>
     <h1>Gestão de Inscrições - Evento</h1>
 
-    <!-- Cadastro de Novo Participante -->
     <div>
         <h2>Cadastrar Novo Participante</h2>
         <label for="nome">Nome do Participante:</label>
@@ -353,8 +335,6 @@
         
         <button onclick="cadastrarParticipante()">Cadastrar Participante</button>
     </div>
-
-    <!-- Seção de Inscrição de Participante em Evento -->
     <div>
         <h2>Inscrição em Evento</h2>
         <label for="evento">Selecione o Evento:</label>
@@ -369,8 +349,6 @@
 
         <button onclick="inscreverParticipante()">Inscrever Participante</button>
     </div>
-
-    <!-- Tabela de Participantes Inscritos -->
     <div>
         <h2>Participantes Inscritos</h2>
         <table>
@@ -384,7 +362,6 @@
                 </tr>
             </thead>
             <tbody id="tabelaInscritos">
-                <!-- Participantes inscritos serão mostrados aqui -->
             </tbody>
         </table>
     </div>

@@ -9,6 +9,7 @@ use App\Http\Controllers\RegistrationsController;
 use App\Http\Controllers\AdmController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\CertificationController;
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('/', HomeController::class);
@@ -17,6 +18,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/presences/{inscription}', [PresenceController::class, 'store'])->name('presences.store');
     Route::post('/inscription/{event}', [InscriptionController::class, 'store'])->name('inscription.store');
     Route::post('/inscription/delete/{eventId}/{refInscription}', [InscriptionController::class, 'destroy'])->name('inscription.delete');
+    Route::post('/certification/{refInscription}', [CertificationController::class, 'store'])->name('certificate.store');
 
     Route::resource('adm/events', EventController::class);
     Route::resource('adm/users', UserController::class);
