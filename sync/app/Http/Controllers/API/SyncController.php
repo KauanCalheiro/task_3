@@ -35,6 +35,8 @@ class SyncController extends Controller
                  
                  return [
                      'id' => $user['id'],
+                     'name' => $user['name'],
+                     'email' => $user['email'],
                      'presenca' => $presenca
                  ];
              });
@@ -50,7 +52,7 @@ class SyncController extends Controller
              'users' => $usersArray,
              'inscricoes' => $inscricoesArray
          ];
- 
+
          return response()->json($response);
     }
     
