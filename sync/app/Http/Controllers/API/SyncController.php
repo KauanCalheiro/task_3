@@ -35,7 +35,7 @@ class SyncController extends Controller
                  
                  return [
                      'id' => $user['id'],
-                     'name' => $user['name'],
+                     'name' => $user['nome'],
                      'email' => $user['email'],
                      'presenca' => $presenca
                  ];
