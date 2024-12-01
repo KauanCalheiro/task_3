@@ -30,7 +30,13 @@ class TrustKey
                 throw new Exception('Invalid token');
             }
 
-            return $next($request);
+            $response = $next($request);
+
+            $response->headers->set('Access-Control-Allow-Origin', '*');
+            $response->headers->set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+            $response->headers->set('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization, Accept, Origin, X-CSRF-Token');
+
+            return $response;
         }
         catch (Exception $e) {
             return response()->json([ 'error' => $e->getMessage(), 'trace' => $e->getTrace()], Response::HTTP_BAD_REQUEST);
