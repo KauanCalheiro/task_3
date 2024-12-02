@@ -1,3 +1,3 @@
 #!/bin/bash
 
-apache2-foreground
+npm run dev & php artisan serve --host=0.0.0.0
