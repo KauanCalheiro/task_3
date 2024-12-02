@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Events;
 use App\Models\Inscriptions;
 use App\Models\Attendances;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\CertificationMail;
 use Hash;
 
 
@@ -85,6 +87,8 @@ class SyncController extends Controller
 
             foreach($inscricoes as $inscricao)
             {
+                $evento_data = Events::where("id", $inscricao['id'])->firstOrFail();
+
                 foreach($inscricao['participantes'] as $participante)
                 {
                     if($user['id'] == $participante['id'])
@@ -96,8 +100,18 @@ class SyncController extends Controller
                                 'ref_user' => $user['new_id'],
                                 'ref_event' => $inscricao['id']
                             ];
+
                             $newi = Inscriptions::create( $newinscription );
                             $participante['newidinscription'] = $newi['id'];
+
+                            Mail::to('joao.vieceli@universo.univates.br')->send(new CertificationMail([
+                                 'name' => $participante['name'],
+                                'eventName' => $evento_data['name'],
+                                'eventDate' => $evento_data['dt_init'] . '  -  ' . $evento_data['dt_end'],
+                                'eventLocation' => $evento_data['location'],
+                                'type' => 1
+                            ]));
+
                         }
                         else
                         {
@@ -115,6 +129,14 @@ class SyncController extends Controller
                                 ];
         
                                 $newi = Attendances::create( $newattendance );
+
+                                Mail::to('joao.vieceli@universo.univates.br')->send(new CertificationMail([
+                                   'name' => 'teste',
+                                    'eventName' => $evento_data['name'],
+                                   'eventDate' => $evento_data['dt_init'] . '  -  ' . $evento_data['dt_end'],
+                                   'eventLocation' => $evento_data['location'],
+                                   'type' => 3
+                               ]));
                             }
                             
                         }
