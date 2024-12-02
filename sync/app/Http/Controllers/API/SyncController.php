@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Events;
 use App\Models\Inscriptions;
 use App\Models\Attendances;
+use Hash;
 
 
 class SyncController extends Controller
