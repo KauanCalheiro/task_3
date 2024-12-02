@@ -1969,6 +1969,146 @@
 					]
 				},
 				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{INSCRIPTION_ROUTE}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{INSCRIPTION_ROUTE}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 07 Nov 2024 01:49:53 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "179"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b3-oqhokny5UZZbMc3ZgYeu39eNzEc\""
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"ref_user\": 2,\n        \"ref_event\": 1,\n        \"dt_inscription\": \"2024-11-06T00:00:00.000Z\",\n        \"created_at\": \"2024-11-07T01:48:20.312Z\",\n        \"updated_at\": \"2024-11-07T01:49:16.842Z\",\n        \"deleted_at\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{INSCRIPTION_ROUTE}}",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}/1",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{INSCRIPTION_ROUTE}}",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 07 Nov 2024 01:50:33 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "177"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b1-iEziwmMe71hByn6yGcAACxFtZaU\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"ref_user\": 2,\n    \"ref_event\": 1,\n    \"dt_inscription\": \"2024-11-06T00:00:00.000Z\",\n    \"created_at\": \"2024-11-07T01:48:20.312Z\",\n    \"updated_at\": \"2024-11-07T01:49:16.842Z\",\n    \"deleted_at\": null\n}"
+						}
+					]
+				},
+				{
 					"name": "Create",
 					"request": {
 						"method": "POST",
@@ -2145,87 +2285,27 @@
 					]
 				},
 				{
-					"name": "Get All",
+					"name": "Delete",
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"{{INSCRIPTION_ROUTE}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Success",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"{{INSCRIPTION_ROUTE}}"
-									]
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ref_user\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Server",
-									"value": "nginx/1.27.2"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 07 Nov 2024 01:49:53 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "179"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"b3-oqhokny5UZZbMc3ZgYeu39eNzEc\""
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"id\": 1,\n        \"ref_user\": 2,\n        \"ref_event\": 1,\n        \"dt_inscription\": \"2024-11-06T00:00:00.000Z\",\n        \"created_at\": \"2024-11-07T01:48:20.312Z\",\n        \"updated_at\": \"2024-11-07T01:49:16.842Z\",\n        \"deleted_at\": null\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "Get By ID",
-					"request": {
-						"method": "GET",
-						"header": [],
+							}
+						},
 						"url": {
-							"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}/1",
+							"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}/2",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"{{INSCRIPTION_ROUTE}}",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -2233,16 +2313,25 @@
 						{
 							"name": "Success",
 							"originalRequest": {
-								"method": "GET",
+								"method": "DELETE",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ref_user\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}/1",
+									"raw": "{{URL}}/{{INSCRIPTION_ROUTE}}/2",
 									"host": [
 										"{{URL}}"
 									],
 									"path": [
 										"{{INSCRIPTION_ROUTE}}",
-										"1"
+										"2"
 									]
 								}
 							},
@@ -2252,11 +2341,11 @@
 							"header": [
 								{
 									"key": "Server",
-									"value": "nginx/1.27.2"
+									"value": "nginx/1.27.3"
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 07 Nov 2024 01:50:33 GMT"
+									"value": "Mon, 02 Dec 2024 01:15:06 GMT"
 								},
 								{
 									"key": "Content-Type",
@@ -2264,7 +2353,7 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "177"
+									"value": "199"
 								},
 								{
 									"key": "Connection",
@@ -2276,11 +2365,11 @@
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"b1-iEziwmMe71hByn6yGcAACxFtZaU\""
+									"value": "W/\"c7-0Yv4QeYl1sgPJk2m1k7Ubx3FxMY\""
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": 1,\n    \"ref_user\": 2,\n    \"ref_event\": 1,\n    \"dt_inscription\": \"2024-11-06T00:00:00.000Z\",\n    \"created_at\": \"2024-11-07T01:48:20.312Z\",\n    \"updated_at\": \"2024-11-07T01:49:16.842Z\",\n    \"deleted_at\": null\n}"
+							"body": "{\n    \"id\": 2,\n    \"ref_user\": 1,\n    \"ref_event\": 1,\n    \"dt_inscription\": \"2024-11-06T00:00:00.000Z\",\n    \"created_at\": \"2024-12-02T01:14:59.793Z\",\n    \"updated_at\": \"2024-12-02T01:15:06.916Z\",\n    \"deleted_at\": \"2024-12-02T01:15:06.916Z\"\n}"
 						}
 					]
 				}
@@ -2357,6 +2446,146 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"message\": \"API of Attendeces is working\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{ATTENDANCE_ROUTE}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{ATTENDANCE_ROUTE}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Nov 2024 01:30:53 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "147"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"93-uGQJ6Alj9T/S3cx3Ckds0bllC84\""
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"ref_inscription\": 1,\n        \"dt_presence\": \"2024-11-08T01:30:24.602Z\",\n        \"created_at\": \"2024-11-08T01:30:24.602Z\",\n        \"updated_at\": null,\n        \"deleted_at\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{ATTENDANCE_ROUTE}}",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}/1",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{ATTENDANCE_ROUTE}}",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.2"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Nov 2024 01:30:46 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "145"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"91-dYEcOgOxYkifmLmoT1G3rx+kpxU\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"ref_inscription\": 1,\n    \"dt_presence\": \"2024-11-08T01:30:24.602Z\",\n    \"created_at\": \"2024-11-08T01:30:24.602Z\",\n    \"updated_at\": null,\n    \"deleted_at\": null\n}"
 						}
 					]
 				},
@@ -2537,87 +2766,27 @@
 					]
 				},
 				{
-					"name": "Get All",
+					"name": "Delete",
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"{{ATTENDANCE_ROUTE}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Success",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}",
-									"host": [
-										"{{URL}}"
-									],
-									"path": [
-										"{{ATTENDANCE_ROUTE}}"
-									]
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ref_inscription\":3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Server",
-									"value": "nginx/1.27.2"
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 08 Nov 2024 01:30:53 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "147"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"93-uGQJ6Alj9T/S3cx3Ckds0bllC84\""
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"id\": 1,\n        \"ref_inscription\": 1,\n        \"dt_presence\": \"2024-11-08T01:30:24.602Z\",\n        \"created_at\": \"2024-11-08T01:30:24.602Z\",\n        \"updated_at\": null,\n        \"deleted_at\": null\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "Get By ID",
-					"request": {
-						"method": "GET",
-						"header": [],
+							}
+						},
 						"url": {
-							"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}/1",
+							"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}/2",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"{{ATTENDANCE_ROUTE}}",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -2625,16 +2794,25 @@
 						{
 							"name": "Success",
 							"originalRequest": {
-								"method": "GET",
+								"method": "DELETE",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ref_inscription\":3\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}/1",
+									"raw": "{{URL}}/{{ATTENDANCE_ROUTE}}/2",
 									"host": [
 										"{{URL}}"
 									],
 									"path": [
 										"{{ATTENDANCE_ROUTE}}",
-										"1"
+										"2"
 									]
 								}
 							},
@@ -2644,11 +2822,11 @@
 							"header": [
 								{
 									"key": "Server",
-									"value": "nginx/1.27.2"
+									"value": "nginx/1.27.3"
 								},
 								{
 									"key": "Date",
-									"value": "Fri, 08 Nov 2024 01:30:46 GMT"
+									"value": "Mon, 02 Dec 2024 01:15:52 GMT"
 								},
 								{
 									"key": "Content-Type",
@@ -2656,7 +2834,7 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "145"
+									"value": "189"
 								},
 								{
 									"key": "Connection",
@@ -2668,11 +2846,11 @@
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"91-dYEcOgOxYkifmLmoT1G3rx+kpxU\""
+									"value": "W/\"bd-PA5GsY7OW/WmRFTAilHpncMPgNc\""
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": 1,\n    \"ref_inscription\": 1,\n    \"dt_presence\": \"2024-11-08T01:30:24.602Z\",\n    \"created_at\": \"2024-11-08T01:30:24.602Z\",\n    \"updated_at\": null,\n    \"deleted_at\": null\n}"
+							"body": "{\n    \"id\": 2,\n    \"ref_inscription\": 2,\n    \"dt_presence\": \"2024-12-02T01:15:24.795Z\",\n    \"created_at\": \"2024-12-02T01:15:24.795Z\",\n    \"updated_at\": \"2024-12-02T01:15:52.400Z\",\n    \"deleted_at\": \"2024-12-02T01:15:52.399Z\"\n}"
 						}
 					]
 				}
@@ -2706,7 +2884,81 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "ref_inscription",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/{{CERTIFICATE_ROUTE}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{CERTIFICATE_ROUTE}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.3"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 02 Dec 2024 01:22:09 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.26"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, must-revalidate"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "-1"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Request successfully\",\n    \"payload\": {\n        \"ref_inscription\": \"1\",\n        \"server_path\": \"2_00000000000_a8c13cf75259dfe61bc5b287c0877958.html\",\n        \"validation_code\": \"a8c13cf75259dfe61bc5b287c0877958\",\n        \"updated_at\": \"2024-12-02T01:22:09.000000Z\",\n        \"created_at\": \"2024-12-02T01:22:09.000000Z\",\n        \"id\": 1\n    },\n    \"count\": 1\n}"
+						}
+					]
 				},
 				{
 					"name": "Get By Inscription",
@@ -2737,7 +2989,86 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "ref_inscription",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/{{CERTIFICATE_ROUTE}}/1",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{CERTIFICATE_ROUTE}}",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.3"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 02 Dec 2024 01:22:53 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.26"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, must-revalidate"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "-1"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Request successfully\",\n    \"payload\": {\n        \"id\": 1,\n        \"ref_inscription\": 1,\n        \"server_path\": \"2_00000000000_a8c13cf75259dfe61bc5b287c0877958.html\",\n        \"validation_code\": \"a8c13cf75259dfe61bc5b287c0877958\",\n        \"created_at\": \"2024-12-02T01:22:09.000000Z\",\n        \"updated_at\": \"2024-12-02T01:22:09.000000Z\",\n        \"deleted_at\": null,\n        \"file\": \"PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KPGhlYWQ+CiAgICA8bWV0YSBjaGFyc2V0PSJVVEYtOCI+CiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEuMCI+CiAgICA8dGl0bGU+Q2VydGlmaWNhdGU8L3RpdGxlPgogICAgPHN0eWxlPgogICAgICAgIGJvZHkgewogICAgICAgICAgICBmb250LWZhbWlseTogQXJpYWwsIHNhbnMtc2VyaWY7CiAgICAgICAgICAgIG1hcmdpbjogMDsKICAgICAgICAgICAgcGFkZGluZzogMDsKICAgICAgICAgICAgZGlzcGxheTogZmxleDsKICAgICAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7CiAgICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7CiAgICAgICAgICAgIGhlaWdodDogMTAwdmg7CiAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICNmM2YzZjM7CiAgICAgICAgfQogICAgICAgIC5jZXJ0aWZpY2F0ZS1jb250YWluZXIgewogICAgICAgICAgICBiYWNrZ3JvdW5kOiB3aGl0ZTsKICAgICAgICAgICAgcGFkZGluZzogMjBweDsKICAgICAgICAgICAgYm9yZGVyOiAycHggc29saWQgIzAwMDsKICAgICAgICAgICAgd2lkdGg6IDgwJTsKICAgICAgICAgICAgbWF4LXdpZHRoOiA4MDBweDsKICAgICAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyOwogICAgICAgIH0KICAgICAgICAuY2VydGlmaWNhdGUtdGl0bGUgewogICAgICAgICAgICBmb250LXNpemU6IDI0cHg7CiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkOwogICAgICAgICAgICBtYXJnaW4tYm90dG9tOiAyMHB4OwogICAgICAgIH0KICAgICAgICAuY2VydGlmaWNhdGUtYm9keSB7CiAgICAgICAgICAgIGZvbnQtc2l6ZTogMThweDsKICAgICAgICAgICAgbWFyZ2luLWJvdHRvbTogMjBweDsKICAgICAgICB9CiAgICAgICAgLmNlcnRpZmljYXRlLWZvb3RlciB7CiAgICAgICAgICAgIGZvbnQtc2l6ZTogMTZweDsKICAgICAgICAgICAgbWFyZ2luLXRvcDogMjBweDsKICAgICAgICB9CiAgICA8L3N0eWxlPgo8L2hlYWQ+Cjxib2R5PgogICAgPGRpdiBjbGFzcz0iY2VydGlmaWNhdGUtY29udGFpbmVyIj4KICAgICAgICA8ZGl2IGNsYXNzPSJjZXJ0aWZpY2F0ZS10aXRsZSI+Q2VydGlmaWNhZG8gZGUgUGFydGljaXBhw6fDo288L2Rpdj4KICAgICAgICA8ZGl2IGNsYXNzPSJjZXJ0aWZpY2F0ZS1ib2R5Ij4KICAgICAgICAgICAgSW5mb3JtYW1vcyBxdWUgPHN0cm9uZz5BZG1pbjwvc3Ryb25nPiwgCiAgICAgICAgICAgIHBvcnRhZG9yIGRvIDxzdHJvbmc+Q1BGPC9zdHJvbmc+IDxzdHJvbmc+MDAwMDAwMDAwMDA8L3N0cm9uZz4sIAogICAgICAgICAgICBjb21wYXJlY2V1IGFvIGV2ZW50byA8c3Ryb25nPjI8L3N0cm9uZz4gLSA8c3Ryb25nPkV2ZW50byBNYW5laXJvPC9zdHJvbmc+LgogICAgICAgIDwvZGl2PgogICAgICAgIDxkaXYgY2xhc3M9ImNlcnRpZmljYXRlLWZvb3RlciI+CiAgICAgICAgICAgIDxicj4KICAgICAgICAgICAgPHA+Q8OzZGlnbyBkZSBWYWxpZGHDp8OjbzogPHN0cm9uZz5hOGMxM2NmNzUyNTlkZmU2MWJjNWIyODdjMDg3Nzk1ODwvc3Ryb25nPjwvcD4KICAgICAgICAgICAgPCEtLSA8cD5QYXJhIHZhbGlkYXIgZXN0ZSBjZXJ0aWZpY2FkbywgYWNlc3NlOiA8YSBocmVmPSJ7eyB2YWxpZGF0aW9uTGluayB9fSI+e3sgdmFsaWRhdGlvbkxpbmsgfX08L2E+PC9wPiAtLT4KICAgICAgICA8L2Rpdj4KICAgIDwvZGl2Pgo8L2JvZHk+CjwvaHRtbD4=\"\n    },\n    \"count\": 1\n}"
+						}
+					]
 				},
 				{
 					"name": "Get By Validate Code",
@@ -2758,19 +3089,317 @@
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/{{CERTIFICATE_ROUTE}}/1",
+							"raw": "{{URL}}/{{CERTIFICATE_ROUTE}}/validate/a8c13cf75259dfe61bc5b287c0877958",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"{{CERTIFICATE_ROUTE}}",
-								"1"
+								"validate",
+								"a8c13cf75259dfe61bc5b287c0877958"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "ref_inscription",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/{{CERTIFICATE_ROUTE}}/validate/a8c13cf75259dfe61bc5b287c0877958",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{CERTIFICATE_ROUTE}}",
+										"validate",
+										"a8c13cf75259dfe61bc5b287c0877958"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.3"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 02 Dec 2024 01:23:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.26"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, must-revalidate"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "-1"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Request successfully\",\n    \"payload\": {\n        \"id\": 1,\n        \"ref_inscription\": 1,\n        \"server_path\": \"2_00000000000_a8c13cf75259dfe61bc5b287c0877958.html\",\n        \"validation_code\": \"a8c13cf75259dfe61bc5b287c0877958\",\n        \"created_at\": \"2024-12-02T01:22:09.000000Z\",\n        \"updated_at\": \"2024-12-02T01:22:09.000000Z\",\n        \"deleted_at\": null,\n        \"file\": \"PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KPGhlYWQ+CiAgICA8bWV0YSBjaGFyc2V0PSJVVEYtOCI+CiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEuMCI+CiAgICA8dGl0bGU+Q2VydGlmaWNhdGU8L3RpdGxlPgogICAgPHN0eWxlPgogICAgICAgIGJvZHkgewogICAgICAgICAgICBmb250LWZhbWlseTogQXJpYWwsIHNhbnMtc2VyaWY7CiAgICAgICAgICAgIG1hcmdpbjogMDsKICAgICAgICAgICAgcGFkZGluZzogMDsKICAgICAgICAgICAgZGlzcGxheTogZmxleDsKICAgICAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7CiAgICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7CiAgICAgICAgICAgIGhlaWdodDogMTAwdmg7CiAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICNmM2YzZjM7CiAgICAgICAgfQogICAgICAgIC5jZXJ0aWZpY2F0ZS1jb250YWluZXIgewogICAgICAgICAgICBiYWNrZ3JvdW5kOiB3aGl0ZTsKICAgICAgICAgICAgcGFkZGluZzogMjBweDsKICAgICAgICAgICAgYm9yZGVyOiAycHggc29saWQgIzAwMDsKICAgICAgICAgICAgd2lkdGg6IDgwJTsKICAgICAgICAgICAgbWF4LXdpZHRoOiA4MDBweDsKICAgICAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyOwogICAgICAgIH0KICAgICAgICAuY2VydGlmaWNhdGUtdGl0bGUgewogICAgICAgICAgICBmb250LXNpemU6IDI0cHg7CiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkOwogICAgICAgICAgICBtYXJnaW4tYm90dG9tOiAyMHB4OwogICAgICAgIH0KICAgICAgICAuY2VydGlmaWNhdGUtYm9keSB7CiAgICAgICAgICAgIGZvbnQtc2l6ZTogMThweDsKICAgICAgICAgICAgbWFyZ2luLWJvdHRvbTogMjBweDsKICAgICAgICB9CiAgICAgICAgLmNlcnRpZmljYXRlLWZvb3RlciB7CiAgICAgICAgICAgIGZvbnQtc2l6ZTogMTZweDsKICAgICAgICAgICAgbWFyZ2luLXRvcDogMjBweDsKICAgICAgICB9CiAgICA8L3N0eWxlPgo8L2hlYWQ+Cjxib2R5PgogICAgPGRpdiBjbGFzcz0iY2VydGlmaWNhdGUtY29udGFpbmVyIj4KICAgICAgICA8ZGl2IGNsYXNzPSJjZXJ0aWZpY2F0ZS10aXRsZSI+Q2VydGlmaWNhZG8gZGUgUGFydGljaXBhw6fDo288L2Rpdj4KICAgICAgICA8ZGl2IGNsYXNzPSJjZXJ0aWZpY2F0ZS1ib2R5Ij4KICAgICAgICAgICAgSW5mb3JtYW1vcyBxdWUgPHN0cm9uZz5BZG1pbjwvc3Ryb25nPiwgCiAgICAgICAgICAgIHBvcnRhZG9yIGRvIDxzdHJvbmc+Q1BGPC9zdHJvbmc+IDxzdHJvbmc+MDAwMDAwMDAwMDA8L3N0cm9uZz4sIAogICAgICAgICAgICBjb21wYXJlY2V1IGFvIGV2ZW50byA8c3Ryb25nPjI8L3N0cm9uZz4gLSA8c3Ryb25nPkV2ZW50byBNYW5laXJvPC9zdHJvbmc+LgogICAgICAgIDwvZGl2PgogICAgICAgIDxkaXYgY2xhc3M9ImNlcnRpZmljYXRlLWZvb3RlciI+CiAgICAgICAgICAgIDxicj4KICAgICAgICAgICAgPHA+Q8OzZGlnbyBkZSBWYWxpZGHDp8OjbzogPHN0cm9uZz5hOGMxM2NmNzUyNTlkZmU2MWJjNWIyODdjMDg3Nzk1ODwvc3Ryb25nPjwvcD4KICAgICAgICAgICAgPCEtLSA8cD5QYXJhIHZhbGlkYXIgZXN0ZSBjZXJ0aWZpY2FkbywgYWNlc3NlOiA8YSBocmVmPSJ7eyB2YWxpZGF0aW9uTGluayB9fSI+e3sgdmFsaWRhdGlvbkxpbmsgfX08L2E+PC9wPiAtLT4KICAgICAgICA8L2Rpdj4KICAgIDwvZGl2Pgo8L2JvZHk+CjwvaHRtbD4=\"\n    },\n    \"count\": 1\n}"
+						}
+					]
 				}
 			]
+		},
+		{
+			"name": "Sync",
+			"item": [
+				{
+					"name": "Pull Server Data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/{{SYNC_ROUTE}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{SYNC_ROUTE}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/{{SYNC_ROUTE}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{SYNC_ROUTE}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.3"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 02 Dec 2024 01:30:29 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.26"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, must-revalidate"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "-1"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET, OPTIONS, PUT, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, X-Auth-Token, Origin, Authorization"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"users\": [\n        {\n            \"id\": 1,\n            \"nome\": \"Admin\",\n            \"email\": \"admin@admin.com\"\n        }\n    ],\n    \"inscricoes\": [\n        {\n            \"id\": 2,\n            \"nome\": \"Evento Maneiro\",\n            \"participantes\": [\n                {\n                    \"id\": 1,\n                    \"name\": \"Admin\",\n                    \"email\": \"admin@admin.com\",\n                    \"presenca\": true\n                }\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Push Server Data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"users\": [\n        {\n            \"id\": 1,\n            \"nome\": \"Admin\",\n            \"email\": \"admin@admin.com\"\n        }\n    ],\n    \"inscricoes\": [\n        {\n            \"id\": 2,\n            \"nome\": \"Evento Maneiro\",\n            \"participantes\": [\n                {\n                    \"id\": 1,\n                    \"name\": \"Admin\",\n                    \"email\": \"admin@admin.com\",\n                    \"presenca\": true\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/{{SYNC_ROUTE}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"{{SYNC_ROUTE}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"users\": [\n        {\n            \"id\": 1,\n            \"nome\": \"Admin\",\n            \"email\": \"admin@admin.com\"\n        }\n    ],\n    \"inscricoes\": [\n        {\n            \"id\": 2,\n            \"nome\": \"Evento Maneiro\",\n            \"participantes\": [\n                {\n                    \"id\": 1,\n                    \"name\": \"Admin\",\n                    \"email\": \"admin@admin.com\",\n                    \"presenca\": true\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/{{SYNC_ROUTE}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"{{SYNC_ROUTE}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.3"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 02 Dec 2024 01:31:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=UTF-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization,Accept-Encoding"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.26"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private, must-revalidate"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "-1"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET, OPTIONS, PUT, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, X-Auth-Token, Origin, Authorization"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "Sincronização finalizada com sucesso!"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Email",
+			"item": []
 		}
 	],
 	"auth": {
