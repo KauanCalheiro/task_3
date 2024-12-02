@@ -111,6 +111,7 @@ class SyncController extends Controller
                                 'eventLocation' => $evento_data['location'],
                                 'type' => 1
                             ]));
+                            
 
                         }
                         else
