@@ -7,10 +7,12 @@ chmod -R 777 /var/www/html
 
 cp .env.example .env
 
+npm install
+
 composer install
 
 php artisan key:generate
 
-npm install
+php artisan migrate:fresh
 
-composer run dev
+npm run dev & php artisan serve --host=0.0.0.0

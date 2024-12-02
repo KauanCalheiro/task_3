@@ -18,8 +18,12 @@ return new class extends Migration
                 $table->string('email')->unique();
                 $table->timestamp('email_verified_at')->nullable();
                 $table->string('password');
+                $table->date('dt_birth')->nullable();
+                $table->char('cpf', 11)->nullable();
+                $table->char('rg', 9)->nullable();
                 $table->rememberToken();
                 $table->timestamps();
+                $table->softDeletes();
             });
         }
 
