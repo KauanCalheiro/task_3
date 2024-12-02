@@ -4,7 +4,7 @@ WORKDIR /var/www/html
 
 COPY . .
 
-RUN apt-get update && apt-get install --allow-unauthenticated -y \
+RUN apt-get update --allow-unauthenticated && apt-get install --allow-unauthenticated -y \
     libpq-dev \
     curl \
     unzip \
