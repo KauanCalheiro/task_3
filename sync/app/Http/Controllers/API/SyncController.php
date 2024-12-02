@@ -70,7 +70,7 @@ class SyncController extends Controller
                 $newuser = [
                     'name' => $user['nome'],
                     'email' => $user['email'],
-                    'password' => 'teste'
+                    'password' => bcrypt('teste')
                 ];
 
                 $newu = User::create( $newuser );
