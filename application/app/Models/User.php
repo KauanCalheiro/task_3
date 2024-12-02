@@ -31,10 +31,9 @@ class User extends Authenticatable
     const BASE_RULES = [
         'name'     => ['max:255'],
         'email'    => ['email', 'max:255'],
-        'password' => ['min:8'],
         'dt_birth' => ['date'],
-        'cpf'      => ['size:11'],
-        'rg'       => ['size:9'],
+        'cpf'      => ['max:255'],
+        'rg'       => ['max:255'],
     ];
 
     const CREATE_RULES = [

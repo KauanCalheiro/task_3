@@ -24,8 +24,8 @@ class UserController extends Controller
         // }
 
         $users = Http::withHeaders([
-            'Authorization' => 'Bearer a2FrYXVfYm9tYmFkYW8='
-        ])->get('http://localhost:80/api/user');
+            'Authorization' => "Bearer {$_ENV['TRUST_KEY']}"
+        ])->get("{$_ENV['URL_PROD']}/api/user");
 
         $users = collect($users['payload'])->map(function ($user) {
             return (object) $user;

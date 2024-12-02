@@ -10,6 +10,10 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class CertificationController extends Controller
 {
+    public function index()
+    {
+        return view('certificate');
+    }
     public function store($id)
     {
         $response_certificate = Http::withHeaders([
@@ -25,7 +29,6 @@ class CertificationController extends Controller
             ])->get("{$_ENV['URL_PROD']}/api/certificate/". $id);
     
             $certificado = $certificado->json();
-    
             $base64File = $certificado['payload']['file'];
 
             $htmlContent = base64_decode($base64File);

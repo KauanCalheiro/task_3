@@ -19,7 +19,7 @@
 <body>
     <div id="app" class="header" {{ request()->is('login') || request()->is('register') ? 'full-width' : '' }}>    
         <!-- Sidebar -->
-        @if(!request()->is('login') && !request()->is('/') && !request()->is('register') && !request()->is('minhas-inscricoes'))
+        @if(!request()->is('login') && !request()->is('/') && !request()->is('register') && !request()->is('minhas-inscricoes') && !request()->is('perfil') && !request()->is('certificado') )
             @include('layouts.sidebar')
         @else
             @if(!request()->is('login') && !request()->is('register'))

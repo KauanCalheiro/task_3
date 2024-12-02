@@ -120,7 +120,6 @@
                 option.textContent = `${user.nome} - ${user.email}`;
                 userSelect.appendChild(option);
             });
-
             atualizarTabelaInscritos(inscricoes, users);
         }
 
@@ -192,6 +191,7 @@
             }
 
             user.presenca = false;
+            user.name = user.nome;
 
             inscricao.users.push(user);
             
@@ -226,7 +226,6 @@
         function atualizarTabelaInscritos(inscricoes, users) {
             const tabelaInscritos = document.getElementById('tabelaInscritos');
             tabelaInscritos.innerHTML = ''; 
-
             inscricoes.forEach(inscricao => {
                 if (inscricao.users) {
                     inscricao.users.forEach(user => {
@@ -428,6 +427,7 @@
     </div>
 
     <button onclick="sincronizarDados()">Sincronizar com Portal</button>
+    <button onclick="buscarDadosApiSync()">Buscar Dados do Portal</button>
 
     <footer>
         <p>Gestão de Inscrições - UNIVENT 2024</p>

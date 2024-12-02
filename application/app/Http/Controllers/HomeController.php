@@ -42,16 +42,21 @@ class HomeController extends Controller
         ])->get("{$_ENV['URL_PROD']}/api/event");
 
         $eventos = $response_event->json();
-
         foreach ($eventos as $key => $event) {
-            $fl_inscrito = false;
-            foreach ($inscricoes as $inscricao) {
-                if ($inscricao['ref_event'] == $event['id']) {
-                    $inscricao = $inscricao['id'];
-                    $fl_inscrito = true;
-                    break;
+                foreach ($inscricoes as $inscricao) {
+                    if (isset($inscricao['ref_event']) && $inscricao['ref_event'] == $event['id']) {
+                        $inscricao = $inscricao['id'];
+                        $fl_inscrito = true;
+                        break;
+                    }
+                    else
+                    {
+                        $inscricao = 0;
+                        $fl_inscrito = false;
+                    }
                 }
-            }
+            
+            
             $eventos[$key]['ref_inscription'] = $inscricao ? $inscricao : null;
             $eventos[$key]['fl_inscrito'] = $fl_inscrito;
         }

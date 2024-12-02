@@ -47,6 +47,10 @@
                             <a class="dropdown-item" href="{{ route('minhas-inscricoes.index') }}">
                                 {{ __('Minhas inscrições') }}
                             </a>
+
+                            <a class="dropdown-item" href="{{ route('perfil.index') }}">
+                                {{ __('Meu perfil') }}
+                            </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
