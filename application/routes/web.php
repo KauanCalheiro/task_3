@@ -29,5 +29,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::resource('/certificado', CertificationController::class);
+Route::post('/validate', [CertificationController::class, 'validateCert'])->name('certificate.validate');
 
 Auth::routes();

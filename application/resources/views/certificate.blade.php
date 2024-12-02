@@ -6,15 +6,13 @@
         <div class="col-md-11">
             <div class="card_suave">
                 <div class="card">
-                    <h1>Validar certificado!</h1>
-                    <form action="" method="POST">
+                    <h1>{{$data->nome}}</h1>
+                    <form action="{{ route('certificate.validate') }}" method="POST">
                         @csrf
-
                         <div class="mb-3">
-                            <label for="name" class="form-label">Código do certificado</label>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Digite o nome completo">
+                            <label for="codverificacao" class="form-label">Código do certificado</label>
+                            <input type="text" id="codverificacao" name="codverificacao" class="form-control" placeholder="Código do certificado">
                         </div>
-
                         <div class="mb-4 text-center">
                             <button type="submit" class="btn btn-primary">Validar</button>
                         </div>

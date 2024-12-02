@@ -56,7 +56,7 @@
                                     {{ __('Entrar') }}
                                 </button>
                             </div>
-                            @if (Route::has('password.request'))  
+                            @if (Route::has('password.request'))
                             <div class="col-md-8" >
                                     <a class="btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
@@ -66,10 +66,18 @@
                         </div>
 
                         <div class="row mb-0">
-                        <div class="col-md-10">
+                            <div class="col-md-10">
                             <p>Não está cadastrado? <a href="/register">Cadastrar</a></p>
                             </div>
+
                         </div>
+
+                        <div class="row mb-0">
+                            <div class="col-md-10">
+                                <p>Para validar um certificado basta clicar aqui <a href="/certificado">Validar</a></p>
+                            </div>
+                        </div>
+
                     </form>
                 </div>
             </div>
