@@ -19,15 +19,11 @@ class InscriptionService {
             throw new Exception("Inscription not found for id: {$ref_inscription}");
         }
 
-        $t = new Inscription(
+        return new Inscription(
             $response->json()['ref_user'],
             $response->json()['ref_event'],
             UserService::index($response->json()['ref_user']),
             EventService::index($response->json()['ref_event'])
         );
-
-        var_dump($t);
-
-        return $t;
     }
 }
