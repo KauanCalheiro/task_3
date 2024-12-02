@@ -351,6 +351,7 @@
                 .then(response => {
                     if (response.ok) {
                         alert('Sincronização bem-sucedida!');
+                        buscarDadosApiSync() 
                     } else {
                         alert('Erro ao sincronizar os dados!');
                     }
@@ -363,7 +364,6 @@
                 console.error("Dados de inscricoes ou users não encontrados no localStorage");
             }
 
-            buscarDadosApiSync()
         }
 
         function inicializarDados() {
