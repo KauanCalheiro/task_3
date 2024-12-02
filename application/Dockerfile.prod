@@ -9,7 +9,7 @@ COPY ./.env.example .env
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 777 /var/www/html
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update --allow-unauthenticated && apt-get install -y \
     libpq-dev \
     curl \
     unzip \
