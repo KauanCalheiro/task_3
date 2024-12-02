@@ -95,6 +95,8 @@ services:
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
       TRUST_KEY: ${TRUST_KEY}
+    depends_on:
+      - postgres
     volumes:
       - ./application:/var/www/html
     networks:
