@@ -4,7 +4,7 @@ WORKDIR /var/www/html
 
 COPY . .
 
-RUN apt-get install -y gnupg
+RUN apt-get update && apt-get install -y gpg
 RUN curl -fsSL https://packages.sury.org/php/README.txt | bash -x
 
 RUN apt-get update --allow-unauthenticated && apt-get install --allow-unauthenticated -y \
