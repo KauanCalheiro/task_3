@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\ApiService;
 use Exception;
+use Hash;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -46,7 +47,7 @@ class UserController extends Controller
     public function store(Request $request){
         try {
             $validatedData = $request->validate(User::RULES());
-            $validatedData['password'] = bcrypt($validatedData['password']);
+            $validatedData['password'] = Hash::make($validatedData['password']);
 
             return ApiService::response( User::create( $validatedData ), code: Response::HTTP_CREATED );
         }
