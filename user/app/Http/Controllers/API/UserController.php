@@ -46,7 +46,7 @@ class UserController extends Controller
     public function store(Request $request){
         try {
             $validatedData = $request->validate(User::RULES());
-            $validatedData['password'] = md5($validatedData['password']);
+            $validatedData['password'] = bcrypt($validatedData['password']);
 
             return ApiService::response( User::create( $validatedData ), code: Response::HTTP_CREATED );
         }
