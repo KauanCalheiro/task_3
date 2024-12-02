@@ -135,6 +135,9 @@ services:
       - 8000
       - 80
       - 5173
+    ports:
+      - "8000:8000"
+      - "5173:5173"
 
   php-certificate:
     container_name: php-certificate

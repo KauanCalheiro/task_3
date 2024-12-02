@@ -11,21 +11,26 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('users')) {
-            Schema::create('users', function (Blueprint $table) {
-                $table->id();
-                $table->string('name');
-                $table->string('email')->unique();
-                $table->timestamp('email_verified_at')->nullable();
-                $table->string('password');
-                $table->date('dt_birth')->nullable();
-                $table->char('cpf', 11)->nullable();
-                $table->char('rg', 9)->nullable();
-                $table->rememberToken();
-                $table->timestamps();
-                $table->softDeletes();
-            });
-        }
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->date('dt_birth')->nullable();
+            $table->char('cpf', 11)->nullable();
+            $table->char('rg', 9)->nullable();
+            $table->rememberToken();
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        DB::table('users')->insertOrIgnore([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('admin'),
+            'dt_birth' => '2000-01-01'
+        ]);
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
