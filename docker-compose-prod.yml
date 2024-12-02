@@ -86,7 +86,7 @@ services:
     restart: always
     build:
       context: ./application
-      dockerfile: Dockerfile.prod
+      dockerfile: Dockerfile.dev
     environment:
       DB_CONNECTION: ${DB_CONNECTION_LARAVEL}
       DB_HOST: ${DB_HOST}
@@ -95,12 +95,17 @@ services:
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
       TRUST_KEY: ${TRUST_KEY}
+    volumes:
+      - ./application:/var/www/html
     networks:
       - task-3-network
     expose:
       - 8000
       - 80
       - 5173
+    ports:
+      - "8000:8000"
+      - "5173:5173"
 
   php-user:
     container_name: php-user
